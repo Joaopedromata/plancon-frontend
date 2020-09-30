@@ -5,9 +5,9 @@ import {
 } from './styles'
 
 
-const Input = ({ placeholder, type }) => {
+const Input = ({ placeholder, type, onChange }) => {
     return (
-        <Insert placeholder={placeholder} type={type}/>
+        <Insert placeholder={placeholder} type={type} onChange={onChange}/>
     )
 }
 

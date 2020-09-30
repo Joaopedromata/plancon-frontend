@@ -1,11 +1,12 @@
 import React from 'react'
 import { ButtonGreen } from './styles'
 
-const ButtonBigScreen = ({ children }) => {
+const ButtonBigScreen = ({ children, to }) => {
+
     return (
-        <ButtonGreen>
-            {children}
-        </ButtonGreen>
+            <ButtonGreen>
+                {children}
+            </ButtonGreen>
     )
 }
 
