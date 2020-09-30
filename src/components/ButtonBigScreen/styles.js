@@ -11,6 +11,7 @@ export const ButtonGreen = styled.button`
     color: var(--color-white);
     background-color: var(--color-button-primary);
     transition: filter 300ms;
+    outline: none;
 
     &:hover{
         filter:brightness(90%);

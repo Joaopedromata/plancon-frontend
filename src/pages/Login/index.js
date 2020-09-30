@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom' 
+
 import imgLogin from '../../assets/image-login.svg'
 import ButtonBigScreen from '../../components/ButtonBigScreen'
 import InputLogin from '../../components/InputLogin'
+import api from '../../service/api'
+
+import { checkNull } from '../../helpers/checkNull'
+
 import {
     Container,
     Header,
@@ -17,16 +23,32 @@ import {
 
 const Login = () => {
     
-    const [ identifier, setIdentifier ] = useState('')
+    const history = useHistory()
+
+    const [ identifier, setIdentifier ] = useState()
     const [ password, setPassword ] = useState('')
 
-    const handleFormSubmit = e => {
+    const handleFormSubmit = async e => {
         
         e.preventDefault()
-        console.log(identifier, password)
-        
-    }
 
+        const data = {
+            identifier,
+            password
+        }
+
+        await checkNull(data)
+
+        await api.post('accounts/login', data
+        ).then(() => {
+            console.log(data)
+            history.push('/menu')
+        }).catch((err) => {
+            console.log(err)
+            alert('Falha no método de entrada')
+        })
+
+    }
 
     return (
         <Container>
