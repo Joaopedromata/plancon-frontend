@@ -1,5 +1,7 @@
 import React from 'react'
 import imgLogin from '../../assets/image-login.svg'
+import ButtonBigScreen from '../../components/ButtonBigScreen'
+import InputLogin from '../../components/InputLogin'
 
 import {
     Container,
@@ -10,12 +12,9 @@ import {
     FormGroup,
     InputGroup,
     Label,
-    Button,
     ImageGroup,
     Image
 } from './styles'
-
-import InputLogin from '../../components/InputLogin'
 
 const Login = () => {
     return (
@@ -32,13 +31,15 @@ const Login = () => {
                 <FormGroup>
                     <InputGroup>
                         <Label>Chapa
-                        <InputLogin placeholder="Insira sua chapa"/>
+                        <InputLogin placeholder="Insira sua chapa" type="text"/>
                         </Label>
                         <Label>Senha
-                        <InputLogin placeholder="Insira sua senha"/>
+                        <InputLogin placeholder="Insira sua senha"type="password"/>
                         </Label>
                     </InputGroup>
-                    <Button>Entrar</Button>
+                    <ButtonBigScreen>
+                        <span>Entrar</span>
+                    </ButtonBigScreen>
                 </FormGroup>
             </Form> 
             <ImageGroup>
