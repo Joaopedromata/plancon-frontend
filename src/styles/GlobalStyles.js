@@ -6,9 +6,11 @@ export default createGlobalStyle`
         padding: 0;
         box-sizing: border-box
     }
-    html, body, #root {
-        height: 100%;
-        width: 100%;
+    html, 
+    body, 
+    #root {
+        /* height: 100%;
+        width: 100%; */
         background-color: -var(--color-primary);
         font-size: 60%;
     }
@@ -19,8 +21,10 @@ export default createGlobalStyle`
         --color-button-primary: #81E979;
         --color-button-secondary: #8C8BDE;
         --color-font-dark: #6A6180;
+        --color-font-light: #9C98A6;
         --color-white: #FFFFFF;
         --color-input-shadow: #DD9AC2;
         --color-input-placeholder: #C9CAD9;
+        --color-light-purple: #8C8BDE;
     }
 `

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom' 
 
 import imgLogin from '../../assets/image-login.svg'
@@ -6,7 +6,7 @@ import ButtonBigScreen from '../../components/ButtonBigScreen'
 import InputLogin from '../../components/InputLogin'
 import api from '../../service/api'
 
-import { checkNull } from '../../helpers/checkNull'
+import checkNull from '../../helpers/checkNull'
 
 import {
     Container,
@@ -28,6 +28,17 @@ const Login = () => {
     const [ identifier, setIdentifier ] = useState()
     const [ password, setPassword ] = useState('')
 
+    const checkLocalStorage = () => {
+        const oldToken = localStorage.getItem('app-token')
+        if (oldToken) {
+            localStorage.clear()
+        }
+    }
+
+    useEffect(() => {
+        checkLocalStorage()
+    }, [])
+
     const handleFormSubmit = async e => {
         
         e.preventDefault()
@@ -40,11 +51,10 @@ const Login = () => {
         await checkNull(data)
 
         await api.post('accounts/login', data
-        ).then(() => {
-            console.log(data)
+        ).then((res) => {
+            localStorage.setItem('app-token', res.data.token)
             history.push('/menu')
-        }).catch((err) => {
-            console.log(err)
+        }).catch(() => {
             alert('Falha no método de entrada')
         })
 
@@ -57,11 +67,11 @@ const Login = () => {
                     planCon
                 </Logo>
             </Header>
-            <Form onSubmit={handleFormSubmit}>
+            <Form>
                 <Title>
                     Faça seu login para <br /> continuar.
                 </Title>
-                <FormGroup>
+                <FormGroup onSubmit={handleFormSubmit}>
                     <InputGroup>
                         <Label>Chapa
                         <InputLogin 
