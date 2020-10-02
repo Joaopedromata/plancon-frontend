@@ -24,8 +24,8 @@ const Header = ({ title, back }) => {
     return (
         <Container>
             <HeaderGroups>
-                <IconLeft onClick={() => handleLogout()}/>
-                <IconRight onClick={() => history.push(back)}/>
+                <IconLeft onClick={() => history.push(back)}/>
+                <IconRight onClick={() => handleLogout()}/>
             </HeaderGroups>
             <div className="title">
                 <Title>{title}</Title>

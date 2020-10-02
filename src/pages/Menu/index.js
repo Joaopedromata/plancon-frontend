@@ -58,7 +58,7 @@ const Menu = () => {
                         </Element>
                     </li>
                     <li>
-                        <Element onClick={() => history.push('/menu')}>
+                        <Element onClick={() => history.push('/obras')}>
                             <Title>Obras</Title>
                             <div className="line"/>
                             <ItemsGroup>

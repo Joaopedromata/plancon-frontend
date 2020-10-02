@@ -24,7 +24,6 @@ export const List = styled.ul`
     li {
         list-style: none;
     }
-
 `
 
 export const Element = styled.button`
