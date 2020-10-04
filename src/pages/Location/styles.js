@@ -47,10 +47,9 @@ export const NameGroup = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    hr {
-            width: 50%;
+    .hr {
+            height: 80px;
             border: 1px solid var(--color-font-dark);
-            transform: rotate(90deg);
         }
 `
 
@@ -61,10 +60,47 @@ export const Name = styled.div`
     color: var(--color-font-dark);
 `
 
-export const InfoGroup = styled.div``
+export const InfoGroup = styled.div`
+    width: 400px;
+    height: 80px;
 
-export const City = styled.div``
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+`
 
-export const CellsCount = styled.div``
+export const City = styled.div`
+    font-family: 'Archivo';
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--color-font-dark-black);
+`
 
-export const Select = styled.div``
+export const CellsCount = styled.div`
+    font-family: 'Archivo';
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--color-font-dark);`
+
+export const Select = styled.div`
+    height: 50px;
+    width: 240px;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Archivo'; 
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: var(--color-white);
+    background-color: var(--color-button-secondary);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: filter 300ms;
+    outline: none;
+
+    &:hover{
+        filter:brightness(90%);
+    };
+`

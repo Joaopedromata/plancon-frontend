@@ -1,7 +1,7 @@
 import React from 'react'
 import { ButtonGreen } from './styles'
 
-const ButtonBigScreen = ({ children, to }) => {
+const ButtonBigScreen = ({ children }) => {
 
     return (
             <ButtonGreen>

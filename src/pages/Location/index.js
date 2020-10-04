@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../../components/Header'
+import { useHistory } from 'react-router-dom'
 
 import {
     Container,
@@ -16,6 +17,9 @@ import {
 } from './styles'
 
 const Location = () => {
+
+    const history = useHistory()
+
     return (
         <Container>
         <Header title="Essas são as obras disponíveis." back="/menu"/>
@@ -24,13 +28,65 @@ const Location = () => {
                     <ItemsGroup>
                         <NameGroup>
                             <Name>VNO</Name>
-                            <hr />
+                            <div className="hr" />
                         </NameGroup>
                         <InfoGroup>
                             <City>João Pedro de Oliveira Mata</City>
                             <CellsCount>321216</CellsCount>
                         </InfoGroup>
-                        <Select>Movimentações</Select>
+                        <Select onClick={() => history.push('/estoque')} >Selecionar</Select>
+                    </ItemsGroup>
+                </Card>
+                <Card>
+                    <ItemsGroup>
+                        <NameGroup>
+                            <Name>VNO</Name>
+                            <div className="hr" />
+                        </NameGroup>
+                        <InfoGroup>
+                            <City>João Pedro de Oliveira Mata</City>
+                            <CellsCount>321216</CellsCount>
+                        </InfoGroup>
+                        <Select onClick={() => history.push('/estoque')} >Selecionar</Select>
+                    </ItemsGroup>
+                </Card>
+                <Card>
+                    <ItemsGroup>
+                        <NameGroup>
+                            <Name>VNO</Name>
+                            <div className="hr" />
+                        </NameGroup>
+                        <InfoGroup>
+                            <City>João Pedro de Oliveira Mata</City>
+                            <CellsCount>321216</CellsCount>
+                        </InfoGroup>
+                        <Select onClick={() => history.push('/estoque')} >Selecionar</Select>
+                    </ItemsGroup>
+                </Card>
+                <Card>
+                    <ItemsGroup>
+                        <NameGroup>
+                            <Name>VNO</Name>
+                            <div className="hr" />
+                        </NameGroup>
+                        <InfoGroup>
+                            <City>João Pedro de Oliveira Mata</City>
+                            <CellsCount>321216</CellsCount>
+                        </InfoGroup>
+                        <Select onClick={() => history.push('/estoque')} >Selecionar</Select>
+                    </ItemsGroup>
+                </Card>
+                <Card>
+                    <ItemsGroup>
+                        <NameGroup>
+                            <Name>VNO</Name>
+                            <div className="hr" />
+                        </NameGroup>
+                        <InfoGroup>
+                            <City>João Pedro de Oliveira Mata</City>
+                            <CellsCount>321216</CellsCount>
+                        </InfoGroup>
+                        <Select onClick={() => history.push('/estoque')} >Selecionar</Select>
                     </ItemsGroup>
                 </Card>
             </Wrapper>
