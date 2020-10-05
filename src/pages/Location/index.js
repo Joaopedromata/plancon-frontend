@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Header from '../../components/Header'
 import { useHistory } from 'react-router-dom'
 
+
 import {
     Container,
     Wrapper,
@@ -13,8 +14,9 @@ import {
     City,
     CellsCount,
     Select
-
 } from './styles'
+
+import NoneMessage from '../../components/NoneMessage'
 import api from '../../service/api'
 
 const Location = () => {
@@ -33,23 +35,27 @@ const Location = () => {
         <Container>
         <Header title="Essas são as obras disponíveis." back="/menu"/>
             <Wrapper>
-                {userLocations.map(data => (
-                    <Card key={data.id}>
-                        <ItemsGroup>
-                            <NameGroup>
-                                <Name>{data.name}</Name>
-                                <div className="hr" />
-                            </NameGroup>
-                            <InfoGroup>
-                                <City>{data.city.name} / {data.city.uf}</City>
-                                <CellsCount>{data.cells.length} Células disponíveis</CellsCount>
-                            </InfoGroup>
-                            <Select onClick={() => history.push('/estoque')} >Selecionar</Select>
-                        </ItemsGroup>
-                    </Card>
-                ))}
-                
-                
+                {userLocations.length > 0 ? (
+                    <>
+                    {userLocations.map(data => (
+                        <Card key={data.id}>
+                            <ItemsGroup>
+                                <NameGroup>
+                                    <Name>{data.name}</Name>
+                                    <div className="hr" />
+                                </NameGroup>
+                                <InfoGroup>
+                                    <City>{data.city.name} / {data.city.uf}</City>
+                                    <CellsCount>{data.cells.length} Células disponível</CellsCount>
+                                </InfoGroup>
+                                <Select onClick={() => history.push('/estoque')} >Selecionar</Select>
+                            </ItemsGroup>
+                        </Card>
+                    ))}
+                    </>
+                ) : (
+                    <NoneMessage text="Nenhum registro encontrado para este usuário."/>
+                )}
             </Wrapper>
         </Container>
     )
