@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import imgInOrOut from '../../assets/image-in-or-out.svg'
 
 import {
@@ -14,6 +15,9 @@ import {
 } from './styles'
 
 const InOrOut = () => {
+
+    const history = useHistory()
+
     return (
         <Container>
             <Header>
@@ -26,7 +30,7 @@ const InOrOut = () => {
                     O que você deseja?
                 </Title>
                 <FormGroup>
-                    <Button>
+                    <Button onClick={() => history.push('/estoque/entrada')}>
                         <span>Inserir</span>
                     </Button>
                     <Button>

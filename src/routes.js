@@ -5,6 +5,7 @@ import Menu from './pages/Menu'
 import Collaborator from './pages/Collaborator'
 import Locations from './pages/Location'
 import InOrOut from './pages/InOrOut'
+import Input from './pages/Input'
 
 const Routes = () => {
     return (
@@ -14,7 +15,8 @@ const Routes = () => {
                 <Route path="/menu" component={Menu} />
                 <Route path="/colaboradores" component={Collaborator} />
                 <Route path="/obras" component={Locations} />
-                <Route path="/estoque" component={InOrOut} />
+                <Route path="/estoque" exact component={InOrOut} />
+                <Route path="/estoque/entrada" component={Input} />
             </Switch>
         </BrowserRouter>
     )
