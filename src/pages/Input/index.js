@@ -4,13 +4,17 @@ import Header from '../../components/Header'
 import {
     Container,
     Wrapper,
-    FirstGroup,
+    WrapperForms,
     Title,
     FormGroup,
     InputFormGroup,
+    InputFormGroupProduct,
     Label,
     InputForm,
-    SubmitButton
+    InputProduct,
+    InputDescription,
+    SubmitButton,
+    IconPlus
 } from './styles'
 
 const Input = () => {
@@ -18,21 +22,48 @@ const Input = () => {
         <Container>
             <Header title="Insira novos produtos ao seu estoque." back="/estoque"/>
             <Wrapper>
-                <FirstGroup>
+                <WrapperForms>
                     <Title>Dados da RM</Title>
                     <hr />
                     <FormGroup>
                         <InputFormGroup>
-                        <Label>RM</Label>
-                            <InputForm />
+                            <Label>RM</Label>
+                            <InputForm placeholder="Número da RM"/>
                         </InputFormGroup>
                         <InputFormGroup>
-                        <Label>Data RM</Label>
-                            <InputForm />
+                            <Label>Data RM</Label>
+                            <InputForm placeholder="Data da RM"/>
                         </InputFormGroup>
-                        <SubmitButton />
+                        <SubmitButton><IconPlus /></SubmitButton>
                     </FormGroup>
-                </FirstGroup>
+                </WrapperForms>
+                <WrapperForms>
+                    <Title>Dados do Produto</Title>
+                    <hr />
+                    <FormGroup>
+                        <InputFormGroupProduct>
+                            <InputFormGroup>
+                                <Label>SAP</Label>
+                                <InputProduct placeholder="Código SAP"/>
+                            </InputFormGroup>
+                            <InputFormGroup>
+                                <Label>Descrição</Label>
+                                <InputDescription placeholder="Descrição do Produto"/>
+                            </InputFormGroup>
+                            <InputFormGroup>
+                                <Label>UND</Label>
+                                <InputProduct placeholder="Unidade"/>
+                            </InputFormGroup>
+                            <InputFormGroup>
+                                <Label>Quantidade</Label>
+                                <InputProduct placeholder="Quantidade"/>
+                            </InputFormGroup>
+                        </InputFormGroupProduct>
+                        <SubmitButton><IconPlus /></SubmitButton>
+                    </FormGroup>
+                </WrapperForms>
+                
+
             </Wrapper>
         </Container>
     )

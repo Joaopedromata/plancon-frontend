@@ -31,6 +31,7 @@ export const HeaderGroups = styled.div`
 `
 
 export const IconLeft = styled(FiArrowLeft)`
+    cursor: pointer;
     width: 25px;
     height: 25px;
     color: var(--color-white);
@@ -43,6 +44,7 @@ export const IconLeft = styled(FiArrowLeft)`
 `
 
 export const IconRight = styled(FiLogOut)`
+    cursor: pointer;
     width: 25px;
     height: 25px;
     color: var(--color-white);

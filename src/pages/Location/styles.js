@@ -50,6 +50,7 @@ export const NameGroup = styled.div`
     .hr {
             height: 80px;
             border: 1px solid var(--color-font-dark);
+            background-color: var(--color-font-dark);
         }
 `
 
@@ -83,6 +84,7 @@ export const CellsCount = styled.div`
     color: var(--color-font-dark);`
 
 export const Select = styled.div`
+    cursor: pointer;
     height: 50px;
     width: 240px;
     border-radius: 8px;

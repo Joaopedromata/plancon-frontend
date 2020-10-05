@@ -53,6 +53,7 @@ const Login = () => {
         await api.post('accounts/login', data
         ).then((res) => {
             localStorage.setItem('app-token', res.data.token)
+            localStorage.setItem('user', res.data.user.id)
             history.push('/menu')
         }).catch(() => {
             alert('Falha no método de entrada')

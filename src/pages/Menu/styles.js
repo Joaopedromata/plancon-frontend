@@ -27,6 +27,7 @@ export const List = styled.ul`
 `
 
 export const Element = styled.button`
+    cursor: pointer;
     outline: none;
     border: 0;
     height: 195px;

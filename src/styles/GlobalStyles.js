@@ -25,5 +25,6 @@ export default createGlobalStyle`
         --color-input-shadow: #DD9AC2;
         --color-input-placeholder: #C9CAD9;
         --color-light-purple: #8C8BDE;
+        --color-input-background: #F8F8FC;
     }
 `

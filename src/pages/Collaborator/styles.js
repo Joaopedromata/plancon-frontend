@@ -68,6 +68,7 @@ export const Identifier = styled.h4`
 `
 
 export const Select = styled.div`
+    cursor: pointer;
     height: 50px;
     width: 240px;
     border-radius: 8px;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../../components/Header'
 import { useHistory } from 'react-router-dom'
 
@@ -15,80 +15,41 @@ import {
     Select
 
 } from './styles'
+import api from '../../service/api'
 
 const Location = () => {
 
     const history = useHistory()
 
+    const [ userLocations , setUserLocations ] = useState([])
+
+    useEffect(() => {
+        const checkUser = localStorage.getItem('user')
+
+        api.get(`/locations/${checkUser}`).then((res) => setUserLocations(res.data.locations)).catch(() => alert('Falha ao carregar dados'))
+    }, [])
+   
     return (
         <Container>
         <Header title="Essas são as obras disponíveis." back="/menu"/>
             <Wrapper>
-                <Card>
-                    <ItemsGroup>
-                        <NameGroup>
-                            <Name>VNO</Name>
-                            <div className="hr" />
-                        </NameGroup>
-                        <InfoGroup>
-                            <City>João Pedro de Oliveira Mata</City>
-                            <CellsCount>321216</CellsCount>
-                        </InfoGroup>
-                        <Select onClick={() => history.push('/estoque')} >Selecionar</Select>
-                    </ItemsGroup>
-                </Card>
-                <Card>
-                    <ItemsGroup>
-                        <NameGroup>
-                            <Name>VNO</Name>
-                            <div className="hr" />
-                        </NameGroup>
-                        <InfoGroup>
-                            <City>João Pedro de Oliveira Mata</City>
-                            <CellsCount>321216</CellsCount>
-                        </InfoGroup>
-                        <Select onClick={() => history.push('/estoque')} >Selecionar</Select>
-                    </ItemsGroup>
-                </Card>
-                <Card>
-                    <ItemsGroup>
-                        <NameGroup>
-                            <Name>VNO</Name>
-                            <div className="hr" />
-                        </NameGroup>
-                        <InfoGroup>
-                            <City>João Pedro de Oliveira Mata</City>
-                            <CellsCount>321216</CellsCount>
-                        </InfoGroup>
-                        <Select onClick={() => history.push('/estoque')} >Selecionar</Select>
-                    </ItemsGroup>
-                </Card>
-                <Card>
-                    <ItemsGroup>
-                        <NameGroup>
-                            <Name>VNO</Name>
-                            <div className="hr" />
-                        </NameGroup>
-                        <InfoGroup>
-                            <City>João Pedro de Oliveira Mata</City>
-                            <CellsCount>321216</CellsCount>
-                        </InfoGroup>
-                        <Select onClick={() => history.push('/estoque')} >Selecionar</Select>
-                    </ItemsGroup>
-                </Card>
-                <Card>
-                    <ItemsGroup>
-                        <NameGroup>
-                            <Name>VNO</Name>
-                            <div className="hr" />
-                        </NameGroup>
-                        <InfoGroup>
-                            <City>João Pedro de Oliveira Mata</City>
-                            <CellsCount>321216</CellsCount>
-                        </InfoGroup>
-                        <Select onClick={() => history.push('/estoque')} >Selecionar</Select>
-                    </ItemsGroup>
-                </Card>
+                {userLocations.map(data => (
+                    <Card key={data.id}>
+                        <ItemsGroup>
+                            <NameGroup>
+                                <Name>{data.name}</Name>
+                                <div className="hr" />
+                            </NameGroup>
+                            <InfoGroup>
+                                <City>{data.city.name} / {data.city.uf}</City>
+                                <CellsCount>{data.cells.length} Células disponíveis</CellsCount>
+                            </InfoGroup>
+                            <Select onClick={() => history.push('/estoque')} >Selecionar</Select>
+                        </ItemsGroup>
+                    </Card>
+                ))}
+                
+                
             </Wrapper>
         </Container>
     )
