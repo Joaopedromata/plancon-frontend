@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { FiPlus } from 'react-icons/fi'
+import { FiPlus, FiEdit, FiX } from 'react-icons/fi'
 
 export const Container = styled.div`
     min-height: 100vh;
@@ -21,6 +21,8 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
+    position: relative;
 `
 
 export const WrapperForms = styled.div`
@@ -163,4 +165,166 @@ export const SubmitButton = styled.button`
 
 export const IconPlus = styled(FiPlus)`
     color: var(--color-white);
+`
+
+export const Table = styled.table`
+    width: 90%;
+
+    padding-bottom: 100px;
+
+    margin-top: 35px;
+    margin-bottom: 10px;
+    color: var(--color-font-dark);
+
+    font-family: 'Archivo';
+    font-size: 15px;
+
+    hr {
+        border: 0.5px solid var(--color-input-placeholder);
+        background-color: var(--color-input-placeholder);
+    }
+`
+
+export const WrapperTables = styled.thead`
+    hr {
+        border: 0.5px solid var(--color-input-placeholder);
+        background-color: var(--color-input-placeholder);
+    }
+`
+
+export const TableData = styled.tr`
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 188px 330px 188px 168px 1fr;
+    grid-template-areas:
+        'SAP description unit quantity icons'
+    ;
+    margin-bottom: 15px;
+`
+
+export const ElementsTableData = styled.tr`
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 188px 330px 188px 168px 1fr;
+    grid-template-areas:
+        'SAP description unit quantity icons'
+    ;
+    padding: 15px 0;    
+
+`
+
+export const TitleElementsSAP = styled.th`
+    grid-area: SAP;
+    text-align: left;
+    font-weight: 600;
+`
+
+export const TitleElementsDescription = styled.th`
+    grid-area: description;
+    text-align: left;
+    font-weight: 600;
+`
+
+export const TitleElementsUnit = styled.th`
+    grid-area: unit;
+    text-align: left;
+    font-weight: 600;
+`
+
+export const TitleElementsQuantity = styled.th`
+    grid-area: quantity;
+    text-align: left;
+    font-weight: 600;
+`
+
+export const TitleElementsIcons = styled.th`
+    grid-area: icons;
+    text-align: left;
+    font-weight: 600;
+`
+
+export const ElementsSAP = styled.th`
+    grid-area: SAP;
+    text-align: left;
+    font-weight: 400;
+`
+
+export const ElementsDescription = styled.th`
+    grid-area: description;
+    text-align: left;
+    font-weight: 400;
+`
+
+export const ElementsUnit = styled.th`
+    grid-area: unit;
+    text-align: left;
+    font-weight: 400;
+`
+
+export const ElementsQuantity = styled.th`
+    grid-area: quantity;
+    text-align: left;
+    font-weight: 400;
+`
+
+export const ElementsIcons = styled.th`
+    grid-area: icons;
+    text-align: left;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+`
+
+export const ButtonSave = styled.button`
+    width: 180px;
+    height: 45px;
+
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Archivo'; 
+    font-weight: 400;
+    font-size: 2.5rem;
+    color: var(--color-white);
+    background-color: var(--color-button-secondary);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: filter 300ms;
+    outline: none;
+
+    position: absolute;
+    right: 5%;
+    bottom: 25px;
+
+    &:hover{
+        filter:brightness(90%);
+    };
+`
+
+export const Edit = styled(FiEdit)`
+    color: var(--color-font-dark);
+    transition: transform 500ms;
+    margin-right: 10px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+
+    &:hover{
+        transform: scale(1.1)
+    };
+`
+
+export const Remove = styled(FiX)`
+    height: 20px;
+    width: 20px;
+    color: var(--color-font-dark);
+    transition: transform 500ms;
+    cursor: pointer;
+    
+    &:hover{
+        transform: scale(1.1)
+    };
 `
