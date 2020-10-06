@@ -14,6 +14,7 @@ export const Container = styled.div`
 export const Wrapper = styled.section`
     width: 1056px;
     margin-top: -3%;
+    margin-bottom: 100px;
 `
 
 export const Card = styled.div`
