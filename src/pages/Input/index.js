@@ -69,8 +69,8 @@ const Input = ({ location }) => {
             alert(`RM ${res.data.rm} cadastrada com sucesso, insira os produtos.`)
             setIsDisabled(false)
             setIsDisabledRM(true)
-        }).catch((err) => {
-            console.log(err)
+        }).catch(() => {
+            alert('Essa RM já exite no sistema, verifique o número e tente novamente')
         })
     }
 
@@ -85,10 +85,16 @@ const Input = ({ location }) => {
             quantity
         }
 
+        
         checkNull(data)
 
         setFillTable([...fillTable, data])
-    
+        
+        setSap('')
+        setDescription('')
+        setUnit('')
+        setQuantity('')
+
     }
 
     const handleSearchProduct = async () => {
