@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header'
+import NoneMessage from '../../components/NoneMessage'
 import { useHistory } from 'react-router-dom'
 import api from '../../service/api'
 
@@ -19,13 +20,6 @@ const Collaborator = () => {
 
 
     const [ colab, setColab ] = useState([])
-
-    const data = [
-        {id: 1, name: "Alberto", identifier: 1249826, createdAt: "2020-10-02T19:39:48.000Z", updatedAt: "2020-10-02T19:39:48.000Z"},
-        {id: 4, name: "Geraldo", identifier: 212122, createdAt: "2020-10-02T19:40:25.000Z", updatedAt: "2020-10-02T19:40:25.000Z"},
-        {id: 1, name: "Alberto", identifier: 1249826, createdAt: "2020-10-02T19:39:48.000Z", updatedAt: "2020-10-02T19:39:48.000Z"},
-        {id: 4, name: "Geraldo", identifier: 212122, createdAt: "2020-10-02T19:40:25.000Z", updatedAt: "2020-10-02T19:40:25.000Z"},
-    ]
 
 
     useEffect(() => {
@@ -49,6 +43,11 @@ const Collaborator = () => {
                     })
                 }                
             })
+
+            const cleanArray = userValue.filter(function( element ) {
+                return element !== undefined;
+            });
+            
             function getUnique(arr, comp) {
 
                                 
@@ -58,7 +57,7 @@ const Collaborator = () => {
                 return unique;
             }
 
-            setColab(getUnique(userValue, 'id'))
+            setColab(getUnique(cleanArray, 'id'))
 
         })
 
@@ -77,18 +76,24 @@ const Collaborator = () => {
         <Container>
             <Header title="Veja quem são seus colaboradores." back="/menu"/>
             <Wrapper>         
-                {colab.map((colabs, index) => (
-                    <Card key={index}>
-                        <ItemsGroup>
-                            <IconUser />
-                            <InfoGroup>
-                                <Name>{colabs.name}</Name>
-                                <Identifier>{colabs.identifier}</Identifier>
-                            </InfoGroup>
-                            <Select>Movimentações</Select>
-                        </ItemsGroup>
-                    </Card>
-                ))}
+                {colab.length > 0 ? (
+                    <>
+                        {colab.map((colabs, index) => (
+                            <Card key={index}>
+                                <ItemsGroup>
+                                    <IconUser />
+                                    <InfoGroup>
+                                        <Name>{colabs.name}</Name>
+                                        <Identifier>{colabs.identifier}</Identifier>
+                                    </InfoGroup>
+                                    <Select>Movimentações</Select>
+                                </ItemsGroup>
+                            </Card>
+                        ))}
+                    </>
+                ) : (
+                    <NoneMessage text="Nenhum colaborador encontrado para este usuário."/>
+                )}                
             </Wrapper>
             
         </Container>

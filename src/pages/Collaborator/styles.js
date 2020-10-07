@@ -48,6 +48,7 @@ export const IconUser = styled(FiUser)`
 `
 
 export const InfoGroup = styled.div`
+    min-width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;

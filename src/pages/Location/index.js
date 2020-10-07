@@ -46,9 +46,9 @@ const Location = () => {
                                 </NameGroup>
                                 <InfoGroup>
                                     <City>{data.city.name} / {data.city.uf}</City>
-                                    <CellsCount>{data.cells.length} Células disponível</CellsCount>
+                                    <CellsCount>{data.cells.length} Células disponíveis</CellsCount>
                                 </InfoGroup>
-                                <Select onClick={() => history.push('/estoque')} >Selecionar</Select>
+                                <Select onClick={() => history.push('/estoque', {id: data.id, name: data.name})}>Selecionar</Select>
                             </ItemsGroup>
                         </Card>
                     ))}

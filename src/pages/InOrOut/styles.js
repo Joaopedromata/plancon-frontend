@@ -37,7 +37,7 @@ export const Form = styled.form`
 `
 
 export const Title = styled.div`
-    width: 60%;
+    max-width: 57%;
     padding-bottom: 25px;
     font-family: 'poppins';
     font-weight: 600;

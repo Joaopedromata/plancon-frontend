@@ -10,8 +10,7 @@ import {
 } from './styles'
 
 
-
-const Header = ({ title, back }) => {
+const Header = ({ title, back, infosBack }) => {
 
     const history = useHistory()
 
@@ -24,7 +23,7 @@ const Header = ({ title, back }) => {
     return (
         <Container>
             <HeaderGroups>
-                <IconLeft onClick={() => history.push(back)}/>
+                <IconLeft onClick={() => history.push(back, infosBack)}/>
                 <IconRight onClick={() => handleLogout()}/>
             </HeaderGroups>
             <div className="title">

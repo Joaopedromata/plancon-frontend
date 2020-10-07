@@ -14,7 +14,7 @@ import {
     Image
 } from './styles'
 
-const InOrOut = () => {
+const InOrOut = ({ location }) => {
 
     const history = useHistory()
 
@@ -27,10 +27,10 @@ const InOrOut = () => {
             </Header>
             <Form>
                 <Title>
-                    O que você deseja?
+                    O que você deseja fazer em {location.state.name}?
                 </Title>
                 <FormGroup>
-                    <Button onClick={() => history.push('/estoque/entrada')}>
+                    <Button onClick={() => history.push('/estoque/entrada', location.state)}>
                         <span>Inserir</span>
                     </Button>
                     <Button>
