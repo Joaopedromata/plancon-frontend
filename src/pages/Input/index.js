@@ -51,6 +51,8 @@ const Input = ({ location }) => {
 
     const [ fillTable, setFillTable ] = useState([])
 
+    const [ sameSap, setSameSap ] = useState(false)
+
 
     const handleFormRMSubmit = e => {
 
@@ -75,21 +77,85 @@ const Input = ({ location }) => {
     }
 
     const handleFormProductSubmit = e => {
-    
+        
         e.preventDefault()
 
         const data = {
+            id: fillTable.length,
             sap,
             description,
             unit,
             quantity
         }
 
+        if(sap === '' || sap == null || typeof sap == undefined){
+            return alert('Preencha todos os campos')
+        }  
+
+        if(description === '' || description == null || typeof description == undefined){
+            return alert('Preencha todos os campos')
+        }  
+
+        if(unit === '' || unit == null || typeof unit == undefined){
+            return alert('Preencha todos os campos')
+        } 
         
-        checkNull(data)
+        if(quantity === '' || quantity == null || typeof quantity == undefined){
+            return alert('Preencha todos os campos')
+        }          
+
+        console.log(fillTable)
+
+        fillTable.map(search => {
+            console.log(search.sap)
+            if(search.sap === sap){
+                {!sameSap && setSameSap(true)}
+            }
+        })
+
+        console.log(sameSap)
+
+        if (sameSap) {
+            return alert('Produto já cadastrado na RM')
+        }
 
         setFillTable([...fillTable, data])
+       
+        // if(fillTable.length > 0){
+        //     setFillTable([...fillTable, data])
+        // }
+
         
+        // for (var prop in fillTable) {
+        // if(fillTable[prop].sap !== sap){
+        //     console.log('3')
+        //     return alert('VAI TOMA NO CU DESSA PORRA DESGRAÇA todos os campos')
+            
+        // } else {
+        //     console.log(prop)
+        //     console.log('2')
+        //     setFillTable([...fillTable, data])
+        // }
+          
+        
+
+    
+        
+        // for (var prop in fillTable) {
+        //     if(fillTable[(prop)].sap !== sap){
+        //         console.log('3')
+        //         return alert('VAI TOMA NO CU DESSA PORRA DESGRAÇA todos os campos')
+                
+        //     } else {
+        //         console.log(prop)
+        //         console.log('2')
+        //         setFillTable([...fillTable, data])
+        //     }
+      
+
+        
+        
+
         setSap('')
         setDescription('')
         setUnit('')
@@ -102,15 +168,31 @@ const Input = ({ location }) => {
         await api.get(`/products/search/${sap}`).then((res) => {
             setDescription(res.data.description)
             
-            api.get(`/products/units/search/${res.data.user_id}`).then((res) => {
+            api.get(`/products/units/search/${res.data.unit_id}`).then((res) => {
                 setUnit(res.data.name)
-            })
+            }).catch(() => alert('Produto não encontrado.'))
 
         }).catch(() => alert('Produto não encontrado.'))
         
     }
 
+    const handleRemoveProduct = (id) => {
 
+        const filter = fillTable.filter(incident => incident.id !== id)
+
+        setFillTable(filter)
+
+    }
+
+    const handleEditProduct = (id) => {
+
+
+        setSap(fillTable[id].sap)
+        setDescription(fillTable[id].description)
+        setUnit(fillTable[id].unit)
+        setQuantity(fillTable[id].quantity)
+
+    }
 
     return (
         <Container>
@@ -146,7 +228,7 @@ const Input = ({ location }) => {
                 <WrapperForms>
                     <Title>Dados do Produto</Title>
                     <hr />
-                    <FormGroup onSubmit={handleFormProductSubmit}>
+                    <FormGroup onSubmit={e => handleFormProductSubmit(e)}>
                         <InputFormGroupProduct>
                             <InputFormGroup>
                                 <Label>SAP</Label>
@@ -212,7 +294,7 @@ const Input = ({ location }) => {
                                 <ElementsDescription>{products.description}</ElementsDescription>
                                 <ElementsUnit>{products.unit}</ElementsUnit>
                                 <ElementsQuantity>{products.quantity}</ElementsQuantity>
-                                <ElementsIcons><Edit /><Remove /></ElementsIcons>
+                                <ElementsIcons><Edit onClick={() => handleEditProduct(products.id)}/><Remove onClick={() => handleRemoveProduct(products.id)}/></ElementsIcons>
                             </ElementsTableData>
                         </>
                     ))}
