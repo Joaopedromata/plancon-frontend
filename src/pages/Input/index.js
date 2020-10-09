@@ -51,8 +51,6 @@ const Input = ({ location }) => {
 
     const [ fillTable, setFillTable ] = useState([])
 
-    const [ sameSap, setSameSap ] = useState(false)
-
 
     const handleFormRMSubmit = e => {
 
@@ -88,6 +86,7 @@ const Input = ({ location }) => {
             quantity
         }
 
+
         if(sap === '' || sap == null || typeof sap == undefined){
             return alert('Preencha todos os campos')
         }  
@@ -103,58 +102,26 @@ const Input = ({ location }) => {
         if(quantity === '' || quantity == null || typeof quantity == undefined){
             return alert('Preencha todos os campos')
         }          
+                            
 
-        console.log(fillTable)
-
-        fillTable.map(search => {
-            console.log(search.sap)
-            if(search.sap === sap){
-                {!sameSap && setSameSap(true)}
+        const addToFillTable = (compare) => {
+            const index = fillTable.findIndex(search => search.sap == compare);
+            if(index < 0) {
+                setFillTable([...fillTable, data])
+            } else {
+                alert('Esse produto já foi inserido na RM')
             }
-        })
-
-        console.log(sameSap)
-
-        if (sameSap) {
-            return alert('Produto já cadastrado na RM')
         }
 
-        setFillTable([...fillTable, data])
-       
-        // if(fillTable.length > 0){
-        //     setFillTable([...fillTable, data])
-        // }
+        addToFillTable(sap)
+        
+       // const editFillTable = (compare) => {
+         //   const found = fillTable.findcompare(search => search.sap === compare)
 
+           // setFillTable([...fillTable, fillTable[found].quantity === 10])
+        //}
         
-        // for (var prop in fillTable) {
-        // if(fillTable[prop].sap !== sap){
-        //     console.log('3')
-        //     return alert('VAI TOMA NO CU DESSA PORRA DESGRAÇA todos os campos')
-            
-        // } else {
-        //     console.log(prop)
-        //     console.log('2')
-        //     setFillTable([...fillTable, data])
-        // }
-          
-        
-
-    
-        
-        // for (var prop in fillTable) {
-        //     if(fillTable[(prop)].sap !== sap){
-        //         console.log('3')
-        //         return alert('VAI TOMA NO CU DESSA PORRA DESGRAÇA todos os campos')
-                
-        //     } else {
-        //         console.log(prop)
-        //         console.log('2')
-        //         setFillTable([...fillTable, data])
-        //     }
-      
-
-        
-        
+        //editFillTable(sap)
 
         setSap('')
         setDescription('')
@@ -184,14 +151,14 @@ const Input = ({ location }) => {
 
     }
 
-    const handleEditProduct = (id) => {
+    const handleEditProduct = (compare) => {
 
-
-        setSap(fillTable[id].sap)
-        setDescription(fillTable[id].description)
-        setUnit(fillTable[id].unit)
-        setQuantity(fillTable[id].quantity)
-
+        const found = fillTable.findIndex(search => search.sap === compare)
+        
+        setSap(fillTable[found].sap)
+        setDescription(fillTable[found].description)
+        setUnit(fillTable[found].unit)
+        setQuantity(fillTable[found].quantity)
     }
 
     return (
@@ -234,7 +201,7 @@ const Input = ({ location }) => {
                                 <Label>SAP</Label>
                                 <InputProduct 
                                     placeholder="Código SAP"
-                                    disabled={isDisabled}    
+                                    //disabled={isDisabled}    
                                     onChange={e => setSap(e.target.value)}
                                     value={sap}
                                     onBlur={() => handleSearchProduct()}
@@ -244,7 +211,7 @@ const Input = ({ location }) => {
                                 <Label>Descrição</Label>
                                 <InputDescription 
                                     placeholder="Descrição do Produto"
-                                    disabled   
+                                    //disabled   
                                     onChange={e => setDescription(e.target.value)}
                                     value={description} 
                                 />
@@ -253,7 +220,7 @@ const Input = ({ location }) => {
                                 <Label>UND</Label>
                                 <InputProduct 
                                     placeholder="Unidade"
-                                    disabled 
+                                    //disabled 
                                     onChange={e => setUnit(e.target.value)}
                                     value={unit}   
                                 />
@@ -262,7 +229,7 @@ const Input = ({ location }) => {
                                 <Label>Quantidade</Label>
                                 <InputProduct 
                                     placeholder="Quantidade"
-                                    disabled={isDisabled}    
+                                    //disabled={isDisabled}    
                                     onChange={e => setQuantity(e.target.value)}
                                     value={quantity}
                                 />
@@ -294,7 +261,7 @@ const Input = ({ location }) => {
                                 <ElementsDescription>{products.description}</ElementsDescription>
                                 <ElementsUnit>{products.unit}</ElementsUnit>
                                 <ElementsQuantity>{products.quantity}</ElementsQuantity>
-                                <ElementsIcons><Edit onClick={() => handleEditProduct(products.id)}/><Remove onClick={() => handleRemoveProduct(products.id)}/></ElementsIcons>
+                                <ElementsIcons><Edit onClick={() => handleEditProduct(products.sap)}/><Remove onClick={() => handleRemoveProduct(products.sap)}/></ElementsIcons>
                             </ElementsTableData>
                         </>
                     ))}
