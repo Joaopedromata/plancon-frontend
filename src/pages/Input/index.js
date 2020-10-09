@@ -10,11 +10,14 @@ import {
     Title,
     FormGroup,
     InputFormGroup,
+    InputFormGroupRM,
     InputFormGroupProduct,
     Label,
     InputForm,
-    InputProduct,
+    InputSap,
     InputDescription,
+    InputUnit,
+    InputQuantity,
     SubmitButton,
     IconPlus,
     Table,
@@ -43,6 +46,9 @@ const Input = ({ location }) => {
 
     const [ isDisabled, setIsDisabled ] = useState(true)
     const [ isDisabledRM, setIsDisabledRM ] = useState(false)
+    const [ isDisabledSap, setIsDisabledSap ] = useState(true)
+
+    const [ rmId, setRmId ] = useState()
 
     const [ sap, setSap ] = useState()
     const [ description, setDescription ] = useState('')
@@ -51,6 +57,32 @@ const Input = ({ location }) => {
 
     const [ fillTable, setFillTable ] = useState([])
 
+    const [ isEdit, setIsEdit ] = useState(false)
+
+    const insertProdutsOnDatabase = () => {
+
+        fillTable.map(data => {
+
+            api.get(`/products/search/${data.sap}`).then((res) => {
+                
+                const productId = (res.data.id)
+                const quantityValue = data.quantity
+
+                api.post(`/storages/inputs/${productId}/${rmId}`, { quantity: quantityValue }).then(() => {
+                    
+                }).catch((err) => {
+                    console.log(err)
+                    alert('Erro ao cadastrar produtos na RM')
+                })
+    
+            }).catch(() => alert('Produto não encontrado.'))
+
+            alert('Produtos inseridos na RM com sucesso')
+
+        })
+        
+
+    }
 
     const handleFormRMSubmit = e => {
 
@@ -67,8 +99,11 @@ const Input = ({ location }) => {
 
         api.post(`storages/rm/${checkUser}/${location.state.id}`, data).then((res) => {
             alert(`RM ${res.data.rm} cadastrada com sucesso, insira os produtos.`)
+            setRmId(res.data.id)
             setIsDisabled(false)
             setIsDisabledRM(true)
+            setIsDisabledSap(false)
+            
         }).catch(() => {
             alert('Essa RM já exite no sistema, verifique o número e tente novamente')
         })
@@ -102,7 +137,6 @@ const Input = ({ location }) => {
         if(quantity === '' || quantity == null || typeof quantity == undefined){
             return alert('Preencha todos os campos')
         }          
-                            
 
         const addToFillTable = (compare) => {
             const index = fillTable.findIndex(search => search.sap == compare);
@@ -111,22 +145,37 @@ const Input = ({ location }) => {
             } else {
                 alert('Esse produto já foi inserido na RM')
             }
+
+            setSap('')
+            setDescription('')
+            setUnit('')
+            setQuantity('')
         }
+                            
+        const editFillTable = (compare) => {
 
-        addToFillTable(sap)
-        
-       // const editFillTable = (compare) => {
-         //   const found = fillTable.findcompare(search => search.sap === compare)
+            const newFillTable = fillTable
 
-           // setFillTable([...fillTable, fillTable[found].quantity === 10])
-        //}
-        
-        //editFillTable(sap)
+            const found = newFillTable.findIndex(search => search.sap === compare)
 
-        setSap('')
-        setDescription('')
-        setUnit('')
-        setQuantity('')
+            newFillTable[found].quantity = quantity
+
+            setFillTable(newFillTable)
+            setIsEdit(false)
+            setIsDisabledSap(false)
+
+            setSap('')
+            setDescription('')
+            setUnit('')
+            setQuantity('')
+       }
+
+
+        if(!isEdit) {
+            return addToFillTable(sap)
+        } else {
+            return editFillTable(sap)
+        }        
 
     }
 
@@ -145,7 +194,7 @@ const Input = ({ location }) => {
 
     const handleRemoveProduct = (id) => {
 
-        const filter = fillTable.filter(incident => incident.id !== id)
+        const filter = fillTable.filter(incident => incident.sap !== id)
 
         setFillTable(filter)
 
@@ -159,6 +208,9 @@ const Input = ({ location }) => {
         setDescription(fillTable[found].description)
         setUnit(fillTable[found].unit)
         setQuantity(fillTable[found].quantity)
+
+        setIsDisabledSap(true)
+        setIsEdit(true)
     }
 
     return (
@@ -169,7 +221,7 @@ const Input = ({ location }) => {
                     <Title>Dados da RM</Title>
                     <hr />
                     <FormGroup onSubmit={handleFormRMSubmit}>
-                        <InputFormGroup>
+                        <InputFormGroupRM>
                             <Label>RM</Label>
                             <InputForm 
                                 placeholder="Número da RM"
@@ -178,8 +230,8 @@ const Input = ({ location }) => {
                                 onChange={e => setIdentifier(e.target.value)}
                                 value={identifier}
                             />
-                        </InputFormGroup>
-                        <InputFormGroup>
+                        </InputFormGroupRM>
+                        <InputFormGroupRM>
                             <Label>Data RM</Label>
                             <InputForm 
                                 placeholder="Data da RM"
@@ -188,7 +240,7 @@ const Input = ({ location }) => {
                                 onChange={e => setDateRM(e.target.value)}
                                 value={dateRM}
                             />
-                        </InputFormGroup>
+                        </InputFormGroupRM>
                         <SubmitButton><IconPlus /></SubmitButton>
                     </FormGroup>
                 </WrapperForms>
@@ -199,9 +251,9 @@ const Input = ({ location }) => {
                         <InputFormGroupProduct>
                             <InputFormGroup>
                                 <Label>SAP</Label>
-                                <InputProduct 
+                                <InputSap 
                                     placeholder="Código SAP"
-                                    //disabled={isDisabled}    
+                                    disabled={isDisabledSap}    
                                     onChange={e => setSap(e.target.value)}
                                     value={sap}
                                     onBlur={() => handleSearchProduct()}
@@ -211,25 +263,25 @@ const Input = ({ location }) => {
                                 <Label>Descrição</Label>
                                 <InputDescription 
                                     placeholder="Descrição do Produto"
-                                    //disabled   
+                                    disabled   
                                     onChange={e => setDescription(e.target.value)}
                                     value={description} 
                                 />
                             </InputFormGroup>
                             <InputFormGroup>
                                 <Label>UND</Label>
-                                <InputProduct 
+                                <InputUnit 
                                     placeholder="Unidade"
-                                    //disabled 
+                                    disabled 
                                     onChange={e => setUnit(e.target.value)}
                                     value={unit}   
                                 />
                             </InputFormGroup>
                             <InputFormGroup>
                                 <Label>Quantidade</Label>
-                                <InputProduct 
+                                <InputQuantity
                                     placeholder="Quantidade"
-                                    //disabled={isDisabled}    
+                                    disabled={isDisabled}    
                                     onChange={e => setQuantity(e.target.value)}
                                     value={quantity}
                                 />
@@ -266,7 +318,7 @@ const Input = ({ location }) => {
                         </>
                     ))}
                 </Table>              
-                <ButtonSave>Salvar</ButtonSave>
+                <ButtonSave onClick={() => insertProdutsOnDatabase()}>Salvar</ButtonSave>
             </Wrapper>
         </Container>
     )

@@ -55,13 +55,25 @@ export const FormGroup = styled.form`
 export const InputFormGroup = styled.div`
     display: flex;
     flex-direction: column;
+    margin-top: 15px;
+    margin-right: 22px;
+`
+export const InputFormGroupRM = styled.div`
     width: 45%;
+    display: flex;
+    flex-direction: column;
     margin-top: 15px;
 `
+
 export const InputFormGroupProduct = styled.div`
-    width: 95%;
-    display: flex;
-    justify-content: space-around;
+
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 170px 430px 130px 158px 1fr;
+    grid-template-areas:
+        'SAP description unit quantity'
+    ;
+    
 `
 
 export const Label = styled.label`
@@ -93,11 +105,12 @@ export const InputForm = styled.input`
 
 `
 
-export const InputProduct = styled.input`
+export const InputSap = styled.input `
+    grid-area: SAP;
+
     background-color: var(--color-input-background);
     height: 45px;
-    max-width: 168px;
-    margin-right: 25px;
+    
     border-radius: 8px;
     border: 1px solid var(--color-input-placeholder);
     outline: none;
@@ -116,15 +129,16 @@ export const InputProduct = styled.input`
 
 `
 
-export const InputDescription = styled.input`
-    margin-right: 25px;
+export const InputDescription = styled.input `
+    grid-area: description;
+   
     background-color: var(--color-input-background);
     height: 45px;
-    width: 300px;
+    
     border-radius: 8px;
     border: 1px solid var(--color-input-placeholder);
     outline: none;
-    padding: 0 20px;
+    padding: 0 0 0 20px;
     font-family: 'Archivo';
 
     &:focus {
@@ -136,7 +150,50 @@ export const InputDescription = styled.input`
         color: var(--color-font-dark);
         font-size: 15px;
     }
+`
 
+export const InputUnit = styled.input `
+    grid-area: unit;
+    background-color: var(--color-input-background);
+    height: 45px;
+    
+    border-radius: 8px;
+    border: 1px solid var(--color-input-placeholder);
+    outline: none;
+    padding: 0 0 0 20px;
+    font-family: 'Archivo';
+
+    &:focus {
+        /* box-shadow: 0 0 7px var(--color-input-shadow); */
+    }
+
+    &::-webkit-input-placeholder { 
+        font-weight: 400;
+        color: var(--color-font-dark);
+        font-size: 15px;
+    }
+`
+
+export const InputQuantity = styled.input `
+    grid-area: quantity;
+    background-color: var(--color-input-background);
+    height: 45px;
+    
+    border-radius: 8px;
+    border: 1px solid var(--color-input-placeholder);
+    outline: none;
+    padding: 0 0 0 20px;
+    font-family: 'Archivo';
+
+    &:focus {
+        /* box-shadow: 0 0 7px var(--color-input-shadow); */
+    }
+
+    &::-webkit-input-placeholder { 
+        font-weight: 400;
+        color: var(--color-font-dark);
+        font-size: 15px;
+    }
 `
 
 export const SubmitButton = styled.button`
@@ -196,7 +253,7 @@ export const WrapperTables = styled.thead`
 export const TableData = styled.tr`
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 188px 330px 188px 168px 1fr;
+    grid-template-columns: 170px 430px 130px 158px 1fr;
     grid-template-areas:
         'SAP description unit quantity icons'
     ;
@@ -206,7 +263,7 @@ export const TableData = styled.tr`
 export const ElementsTableData = styled.tr`
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 188px 330px 188px 168px 1fr;
+    grid-template-columns: 170px 430px 130px 158px 1fr;
     grid-template-areas:
         'SAP description unit quantity icons'
     ;

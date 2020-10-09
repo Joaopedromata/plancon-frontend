@@ -6,6 +6,7 @@ import Collaborator from './pages/Collaborator'
 import Locations from './pages/Location'
 import InOrOut from './pages/InOrOut'
 import Input from './pages/Input'
+import Output from './pages/Output'
 
 const Routes = () => {
     return (
@@ -17,6 +18,7 @@ const Routes = () => {
                 <Route path="/obras" component={Locations} />
                 <Route path="/estoque" exact component={InOrOut} />
                 <Route path="/estoque/entrada" component={Input} />
+                <Route path="/estoque/saida" component={Output} />
             </Switch>
         </BrowserRouter>
     )
