@@ -1,15 +1,22 @@
 import React from 'react'
+import {
+    Container,
+    Wrapper,
+    WrapperForms,
+    Title
+} from './styles'
+
+import Header from '../../components/Header'
 
 const Output = () => {
     return (
-        <h1>oi</h1>
-        // <Container>
-        //     <Header title="Insira novos produtos ao seu estoque." back="/estoque" infosBack={location.state}/>
-        //     <Wrapper>
-        //         <WrapperForms>
-        //             <Title>Dados da RM</Title>
-        //             <hr />
-        //             <FormGroup onSubmit={handleFormRMSubmit}>
+        <Container>
+           <Header title="Retire produtos do seu estoque." back="/estoque"/>
+             <Wrapper>
+                 <WrapperForms>
+                     <Title>Dados da Plancon</Title>
+                     <hr />
+     {/*   //             <FormGroup onSubmit={handleFormRMSubmit}>
         //                 <InputFormGroupRM>
         //                     <Label>RM</Label>
         //                     <InputForm 
@@ -31,9 +38,9 @@ const Output = () => {
         //                     />
         //                 </InputFormGroupRM>
         //                 <SubmitButton><IconPlus /></SubmitButton>
-        //             </FormGroup>
-        //         </WrapperForms>
-        //         <WrapperForms>
+        //             </FormGroup> */}
+                </WrapperForms>
+        {/* //         <WrapperForms>
         //             <Title>Dados do Produto</Title>
         //             <hr />
         //             <FormGroup onSubmit={e => handleFormProductSubmit(e)}>
@@ -107,9 +114,9 @@ const Output = () => {
         //                 </>
         //             ))}
         //         </Table>              
-        //         <ButtonSave onClick={() => insertProdutsOnDatabase()}>Salvar</ButtonSave>
-        //     </Wrapper>
-        // </Container>
+        //         <ButtonSave onClick={() => insertProdutsOnDatabase()}>Salvar</ButtonSave> */}
+             </Wrapper>
+         </Container>
     )
 }
 
