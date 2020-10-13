@@ -33,7 +33,7 @@ const InOrOut = ({ location }) => {
                     <Button onClick={() => history.push('/estoque/entrada', location.state)}>
                         <span>Inserir</span>
                     </Button>
-                    <Button onClick={() => history.push('/estoque/saida')}>
+                    <Button onClick={() => history.push('/estoque/saida', location.state)}>
                         <span>Retirar</span>
                     </Button>
                     <Button onClick={() => history.push('/menu')}>

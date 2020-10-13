@@ -77,9 +77,9 @@ const Input = ({ location }) => {
     
             }).catch(() => alert('Produto não encontrado.'))
 
-            alert('Produtos inseridos na RM com sucesso')
-
         })
+        
+        return alert('Produtos inseridos na RM com sucesso')
         
 
     }

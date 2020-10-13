@@ -69,7 +69,7 @@ export const InputFormGroupProduct = styled.div`
 
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 170px 430px 130px 158px 1fr;
+    grid-template-columns: 170px 430px 130px 168px 1fr;
     grid-template-areas:
         'SAP description unit quantity'
     ;
