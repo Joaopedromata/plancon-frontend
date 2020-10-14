@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from '../../components/Header'
 import api from '../../service/api'
 import checkNull from '../../helpers/checkNull'
@@ -50,6 +50,7 @@ const Input = ({ location }) => {
     const [ isDisabled, setIsDisabled ] = useState(true)
     const [ isDisabledRM, setIsDisabledRM ] = useState(false)
     const [ isDisabledSap, setIsDisabledSap ] = useState(true)
+    const [ isDisabledSave, setIsDisabledSave ] = useState(true)
 
     const [ rmId, setRmId ] = useState()
 
@@ -62,9 +63,19 @@ const Input = ({ location }) => {
 
     const [ isEdit, setIsEdit ] = useState(false)
 
+    useEffect(() => {
+        {!isModalVisible && cleanProducts()}
+    }, [isModalVisible])
+    
+    const cleanProducts = () => {
+        setIdentifier('')
+        setDateRM('') 
+        setFillTable([])
+    }
+
     const insertProdutsOnDatabase = () => {
 
-        fillTable.map(data => {
+        fillTable.map((data) => {
 
             api.get(`/products/search/${data.sap}`).then((res) => {
                 
@@ -81,8 +92,12 @@ const Input = ({ location }) => {
             }).catch(() => alert('Produto não encontrado.'))
 
         })
-        
+
+        setIsDisabled(true)
+        setIsDisabledRM(false)
+        setIsDisabledSap(true) 
         setIsModalVisible(true)
+        
         return alert('Produtos inseridos na RM com sucesso')
     }
 
@@ -114,6 +129,8 @@ const Input = ({ location }) => {
     const handleFormProductSubmit = e => {
         
         e.preventDefault()
+
+        setIsDisabledSave(false)
 
         const data = {
             id: fillTable.length,
@@ -289,9 +306,7 @@ const Input = ({ location }) => {
                                 />
                             </InputFormGroup>
                         </InputFormGroupProduct>
-                        <SubmitButton
-                            
-                        ><IconPlus /></SubmitButton>
+                        <SubmitButton><IconPlus /></SubmitButton>
                     </FormGroup>
                 </WrapperForms>
                 <Table>
@@ -320,9 +335,15 @@ const Input = ({ location }) => {
                         </>
                     ))}
                 </Table>              
-                <ButtonSave onClick={() => insertProdutsOnDatabase()}>Salvar</ButtonSave>
+                <ButtonSave onClick={() => insertProdutsOnDatabase()} disabled={isDisabledSave}>Salvar</ButtonSave>
             </Wrapper>
-            {isModalVisible && <ModalRM onClose={() => setIsModalVisible(false)}/>}
+            {isModalVisible && <ModalRM 
+                                    infos={fillTable} 
+                                    cities={location.state} 
+                                    onClose={() => setIsModalVisible(false)}
+                                    date={dateRM}
+                                    identifier={rmId}
+                                />}
         </Container>
     )
 }
