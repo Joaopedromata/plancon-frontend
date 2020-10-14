@@ -7,6 +7,7 @@ import Locations from './pages/Location'
 import InOrOut from './pages/InOrOut'
 import Input from './pages/Input'
 import Output from './pages/Output'
+import CollabDetails from './pages/CollabDetails'
 
 const Routes = () => {
     return (
@@ -14,7 +15,8 @@ const Routes = () => {
             <Switch>
                 <Route path="/" exact component={Login} />
                 <Route path="/menu" component={Menu} />
-                <Route path="/colaboradores" component={Collaborator} />
+                <Route path="/colaboradores" exact component={Collaborator} />
+                <Route path="/colaboradores/detalhes" component={CollabDetails} />
                 <Route path="/obras" component={Locations} />
                 <Route path="/estoque" exact component={InOrOut} />
                 <Route path="/estoque/entrada" component={Input} />
