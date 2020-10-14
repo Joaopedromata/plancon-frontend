@@ -38,9 +38,12 @@ import {
 import checkNull from '../../helpers/checkNull'
 import Header from '../../components/Header'
 import api from '../../service/api'
+import ModelPlancon from '../../components/ModalPlancon'
 
 
 const Output = ({ location }) => {
+
+    const [ isModalVisible, setIsModalVisible ] = useState(false)
 
     const [ fillTable, setFillTable ] = useState([])
 
@@ -79,8 +82,7 @@ const Output = ({ location }) => {
             }).catch(() => alert('Produto não encontrado.'))
 
         })
-        
-        setFillTable([])
+        setIsModalVisible(true)
 
         return alert('Produtos inseridos na Plancon com sucesso')
 
@@ -325,6 +327,13 @@ const Output = ({ location }) => {
                  </Table>              
                  <ButtonSave onClick={() => insertProdutsOnDatabase()}>Salvar</ButtonSave>
              </Wrapper>
+             {isModalVisible && <ModelPlancon 
+                                    infos={fillTable}
+                                    cities={location.state} 
+                                    onClose={() => setIsModalVisible(false)}
+                                    date={datePlancon}
+                                    identifier={planconId}
+                                />}
          </Container>
     )
 }
