@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Header from '../../components/Header'
 import api from '../../service/api'
 import checkNull from '../../helpers/checkNull'
+import ModalRM from '../../components/ModalRM'
 
 import {
     Container,
@@ -41,6 +42,8 @@ import {
 
 const Input = ({ location }) => {
 
+    const [ isModalVisible, setIsModalVisible ] = useState(false)
+
     const [ identifier, setIdentifier ] = useState('')
     const [ dateRM, setDateRM ] = useState('')
 
@@ -79,9 +82,8 @@ const Input = ({ location }) => {
 
         })
         
+        setIsModalVisible(true)
         return alert('Produtos inseridos na RM com sucesso')
-        
-
     }
 
     const handleFormRMSubmit = e => {
@@ -320,6 +322,7 @@ const Input = ({ location }) => {
                 </Table>              
                 <ButtonSave onClick={() => insertProdutsOnDatabase()}>Salvar</ButtonSave>
             </Wrapper>
+            {isModalVisible && <ModalRM onClose={() => setIsModalVisible(false)}/>}
         </Container>
     )
 }

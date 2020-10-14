@@ -22,6 +22,7 @@ export default createGlobalStyle`
         --color-font-light: #9C98A6;
         --color-font-dark-black: #32264D;
         --color-white: #FFFFFF;
+        --color-black: #000000;
         --color-input-shadow: #DD9AC2;
         --color-input-placeholder: #C9CAD9;
         --color-light-purple: #8C8BDE;
