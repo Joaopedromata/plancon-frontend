@@ -20,7 +20,7 @@ const Collaborator = () => {
 
 
     const [ colab, setColab ] = useState([])
-
+    const history = useHistory()
 
     useEffect(() => {
            
@@ -86,7 +86,7 @@ const Collaborator = () => {
                                         <Name>{colabs.name}</Name>
                                         <Identifier>{colabs.identifier}</Identifier>
                                     </InfoGroup>
-                                    <Select>Movimentações</Select>
+                                    <Select onClick={() => history.push('/colaboradores/detalhes', { id: colabs.id, name: colabs.name })}>Movimentações</Select>
                                 </ItemsGroup>
                             </Card>
                         ))}

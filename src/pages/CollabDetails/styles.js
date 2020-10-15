@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { FiEye, FiPrinter } from 'react-icons/fi'
+import { MdPictureAsPdf } from 'react-icons/md'
 
 export const Container = styled.div`
     min-height: 100vh;
@@ -24,15 +26,21 @@ export const Wrapper = styled.section`
 
 export const WrapperTable = styled.div`
     width: 90%;
-    height: 500px;
+    min-height: 500px;
+    margin-top: 20px;
+
+    hr {
+        border: 0.5px solid var(--color-input-placeholder);
+        background-color: var(--color-input-placeholder);
+    }
 `
 
 export const HeaderTable = styled.div`
-    margin-bottom: 10px; 
+    margin: 15px 0; 
     width: 100%;
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 2fr 5fr 2fr 2fr 1fr;
+    grid-template-columns: 2fr 4fr 2fr 1fr 1fr;
     grid-template-areas:
         'date moves location id icons'
     ;   
@@ -61,7 +69,22 @@ export const HeaderIdentifier = styled.div`
     grid-area: id;
 `
 
-export const BodyTable = styled.div``
+export const BodyTable = styled.div`
+    margin: 15px 0; 
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 2fr 4fr 2fr 1fr 1fr;
+    grid-template-areas:
+        'date moves location id icons'
+    ;   
+
+    color: var(--color-font-dark);
+
+    font-family: 'Archivo';
+    font-size: 15px;
+    font-weight: 400;
+`
 
 export const BodyDateDetails = styled.div``
 
@@ -71,4 +94,45 @@ export const BodyLocation = styled.div``
 
 export const BodyIdentifier = styled.div``
 
-export const BodyIconGroup = styled.div``
+export const BodyIconGroup = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+`
+
+export const IconEye = styled(FiEye)`
+    height: 20px;
+    width: 20px;
+
+    transition: transform 500ms;
+    cursor: pointer;
+
+    &:hover{
+        transform: scale(1.1)
+    };
+`
+
+export const IconPrinter = styled(FiPrinter)`
+    height: 20px;
+    width: 20px;
+
+    transition: transform 500ms;
+    cursor: pointer;
+
+    &:hover{
+        transform: scale(1.1)
+    };
+`
+
+export const IconPDF = styled(MdPictureAsPdf)`
+    height: 20px;
+    width: 20px;
+
+    transition: transform 500ms;
+    cursor: pointer;
+
+    &:hover{
+        transform: scale(1.1)
+    };
+`
