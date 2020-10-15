@@ -25,18 +25,17 @@ export const Wrapper = styled.section`
 export const WrapperTable = styled.div`
     width: 90%;
     height: 500px;
-    background-color: green;
 `
 
 export const HeaderTable = styled.div`
+    margin-bottom: 10px; 
     width: 100%;
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 1fr 3fr 1fr 1fr 2fr;
+    grid-template-columns: 2fr 5fr 2fr 2fr 1fr;
     grid-template-areas:
         'date moves location id icons'
     ;   
-    background-color: yellow;
 
     color: var(--color-font-dark);
 
@@ -46,13 +45,21 @@ export const HeaderTable = styled.div`
     
 `
 
-export const HeaderDateDetails = styled.div``
+export const HeaderDateDetails = styled.div`
+    grid-area: date;
+`
 
-export const HeaderMoves = styled.div``
+export const HeaderMoves = styled.div`
+    grid-area: moves;
+`
 
-export const HeaderLocation = styled.div``
+export const HeaderLocation = styled.div`
+    grid-area: location;
+`
 
-export const HeaderIdentifier = styled.div``
+export const HeaderIdentifier = styled.div`
+    grid-area: id;
+`
 
 export const BodyTable = styled.div``
 
