@@ -73,7 +73,7 @@ const Output = ({ location }) => {
                 const productId = (res.data.id)
                 const quantityValue = data.quantity
 
-                api.post(`/storages/inputs/${productId}/${planconId}`, { quantity: quantityValue }).then(() => {
+                api.post(`/storages/outputs/${productId}/${planconId}`, { quantity: quantityValue }).then(() => {
                     
                 }).catch(() => {
                     alert('Erro ao cadastrar produtos na Plancon')

@@ -20,14 +20,13 @@ export const Wrapper = styled.section`
     border-radius: 8px;
 
     display: flex;
-    align-items: center;
     justify-content: center;    
 `
 
 export const WrapperTable = styled.div`
     width: 90%;
     min-height: 500px;
-    margin-top: 20px;
+    margin: 20px 0;
 
     hr {
         border: 0.5px solid var(--color-input-placeholder);

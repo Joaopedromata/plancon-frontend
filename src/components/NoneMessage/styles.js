@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const NoneWrapper = styled.div`
     border-radius: 8px;
     width: 100%;
-    height: 400px;
     background-color: var(--color-white);
 
     display: flex;
