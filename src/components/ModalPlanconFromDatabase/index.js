@@ -27,21 +27,22 @@ import {
 } from './styles'
 
 
-const ModalRMFromDatabase = ({ id = 'modal', onClose = () => {}, identifier }) => {
+const ModalPlanconFromDatabase = ({ id = 'modal', onClose = () => {}, identifier }) => {
 
     const [ fillTable, setFillTable ] = useState([])
-    const [ dateRm, setDateRm ] = useState('')
+    const [ datePlancon, setDatePlancon ] = useState('')
     const [ location, setLocation ] = useState('')
     const [ city, setCity ] = useState('')
     const [ uf, setUf ] = useState('')
-    const [ identifierRm, setIdentifierRm ] = useState()
+    const [ identifierPlancon, setIdentifierPlancon ] = useState()
 
     useEffect(() => {
         
-        api.get(`/storages/inputs/${identifier}`).then((res) => {
-            setFillTable(res.data.inputs)
-            setDateRm(res.data.date)
-            setIdentifierRm(res.data.rm)
+        api.get(`/storages/outputs/${identifier}`).then((res) => {
+            console.log(res.data)
+            setFillTable(res.data.outputs)
+            setDatePlancon(res.data.date)
+            setIdentifierPlancon(res.data.id)
             setCity(res.data.location.city.name)
             setLocation(res.data.location.name)
             setUf(res.data.location.city.uf)
@@ -61,10 +62,9 @@ const ModalRMFromDatabase = ({ id = 'modal', onClose = () => {}, identifier }) =
             </MiniWrapper>
             <Wrapper>
                 <HeaderWrapper>
-                    <DateCase>{new Date(dateRm).toLocaleDateString("pt-BR",{ year: 'numeric', month: '2-digit', day: '2-digit' })}</DateCase><Location>{location} - {city}/{uf}</Location><Identifier>RM {identifierRm}</Identifier>
+                    <DateCase>{new Date(datePlancon).toLocaleDateString("pt-BR",{ year: 'numeric', month: '2-digit', day: '2-digit' })}</DateCase><Location>{location} - {city}/{uf}</Location><Identifier>Plancon {identifierPlancon}</Identifier>
                 </HeaderWrapper>
                 <Table>
-                    {console.log(fillTable)}
                     {fillTable.length === 0 ? (null) : (
                         <WrapperTables>
                             <TableData>
@@ -96,4 +96,4 @@ const ModalRMFromDatabase = ({ id = 'modal', onClose = () => {}, identifier }) =
     )
 }
 
-export default ModalRMFromDatabase 
+export default ModalPlanconFromDatabase 

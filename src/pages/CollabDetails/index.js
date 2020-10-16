@@ -23,11 +23,13 @@ import {
     IconPrinter,
     IconPDF
 } from './styles'
+import ModalPlanconFromDatabase from '../../components/ModalPlanconFromDatabase'
 
 const CollabDetails = ({ location }) => {
 
     const [ infos, setInfos ] = useState([])
     const [ isModalRmVisible, setIsModalRmVisible ] = useState(false)
+    const [ isModalPlanconVisible, setIsModalPlanconVisible ] = useState(false)
     const [ identifier, setIdentifier ] = useState()
 
     useEffect(() => {
@@ -40,13 +42,15 @@ const CollabDetails = ({ location }) => {
         })   
     }, [])
 
-    const handleEyeClick = (id) => {
+    const handleEyeClickRm = (id) => {
         setIsModalRmVisible(true)
         setIdentifier(id)
     }
 
-    
-
+    const handleEyeClickPlancon = (id) => {
+        setIsModalPlanconVisible(true)
+        setIdentifier(id)
+    }  
 
     return (
         <Container>
@@ -70,7 +74,7 @@ const CollabDetails = ({ location }) => {
                                     <BodyLocation>{data.location.name}</BodyLocation>
                                     {data.rm ? (<BodyIdentifier>{data.rm}</BodyIdentifier>) : (<BodyIdentifier>{data.id}</BodyIdentifier>)}
                                     <BodyIconGroup>
-                                        <IconEye onClick={data.rm ? () => handleEyeClick(data.id) : 'oi'}/>
+                                        <IconEye onClick={data.rm ? () => handleEyeClickRm(data.id) : () => handleEyeClickPlancon(data.id)}/>
                                         <IconPrinter />
                                         <IconPDF />
                                     </BodyIconGroup>
@@ -83,6 +87,11 @@ const CollabDetails = ({ location }) => {
             </Wrapper>
             {isModalRmVisible && <ModalRmFromDatabase 
                                     onClose={() => setIsModalRmVisible(false)}
+                                    identifier={identifier}
+                                />
+            }
+            {isModalPlanconVisible && <ModalPlanconFromDatabase 
+                                    onClose={() => setIsModalPlanconVisible(false)}
                                     identifier={identifier}
                                 />
             }

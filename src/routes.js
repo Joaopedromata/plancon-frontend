@@ -8,6 +8,7 @@ import InOrOut from './pages/InOrOut'
 import Input from './pages/Input'
 import Output from './pages/Output'
 import CollabDetails from './pages/CollabDetails'
+import HistoryLocation from './pages/HistoryLocation'
 
 const Routes = () => {
     return (
@@ -21,6 +22,7 @@ const Routes = () => {
                 <Route path="/estoque" exact component={InOrOut} />
                 <Route path="/estoque/entrada" component={Input} />
                 <Route path="/estoque/saida" component={Output} />
+                <Route path="/estoque/historico" component={HistoryLocation} />
             </Switch>
         </BrowserRouter>
     )
