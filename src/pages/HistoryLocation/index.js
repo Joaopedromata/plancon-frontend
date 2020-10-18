@@ -4,12 +4,15 @@ import {
     Container,
     Wrapper,
     Table,
-    WrapperTables,
-    TableData,
-    TitleElementsDate,
-    TitleElementsMoves,
-    TitleElementsIdentifier,
-    TitleElementsIcons
+    HeaderTable,
+    ElementsDate,
+    ElementsMoves,
+    ElementsIdentifier,
+    ElementsIcons,
+    BodyTable,
+    IconEye,
+    IconPrinter,
+    IconPDF
 } from './styles'
 
 
@@ -19,14 +22,89 @@ const HistoryLocation = ({ location }) => {
             <Header title={`Aqui estão as movimentações na obra ${location.state.name}`} back="/estoque" infosBack={location.state}/>
             <Wrapper>
                 <Table>
-                    <WrapperTables>
-                        <TableData>
-                            <TitleElementsDate>Data</TitleElementsDate>
-                            <TitleElementsMoves>Movimentações</TitleElementsMoves>
-                            <TitleElementsIdentifier>ID</TitleElementsIdentifier>
-                            <TitleElementsIcons></TitleElementsIcons>
-                        </TableData>
-                    </WrapperTables>
+                    <HeaderTable>
+                        <ElementsDate>Data</ElementsDate>
+                        <ElementsMoves>Movimentações</ElementsMoves>
+                        <ElementsIdentifier>ID</ElementsIdentifier>
+                        <ElementsIcons></ElementsIcons>
+                    </HeaderTable>
+                    <hr />
+                    <BodyTable>
+                        <ElementsDate>03/10/2020</ElementsDate>
+                        <ElementsMoves>Criação de Plancon</ElementsMoves>
+                        <ElementsIdentifier>123312</ElementsIdentifier>
+                        <ElementsIcons>
+                            <IconEye />
+                            <IconPrinter />
+                            <IconPDF />
+                        </ElementsIcons>
+                    </BodyTable>
+                    <hr />
+                    <BodyTable>
+                        <ElementsDate>03/10/2020</ElementsDate>
+                        <ElementsMoves>Criação de Plancon</ElementsMoves>
+                        <ElementsIdentifier>123312</ElementsIdentifier>
+                        <ElementsIcons>
+                            <IconEye />
+                            <IconPrinter />
+                            <IconPDF />
+                        </ElementsIcons>
+                    </BodyTable>
+                    <hr />
+                    <BodyTable>
+                        <ElementsDate>03/10/2020</ElementsDate>
+                        <ElementsMoves>Criação de Plancon</ElementsMoves>
+                        <ElementsIdentifier>123312</ElementsIdentifier>
+                        <ElementsIcons>
+                            <IconEye />
+                            <IconPrinter />
+                            <IconPDF />
+                        </ElementsIcons>
+                    </BodyTable>
+                    <hr />
+                    <BodyTable>
+                        <ElementsDate>03/10/2020</ElementsDate>
+                        <ElementsMoves>Criação de Plancon</ElementsMoves>
+                        <ElementsIdentifier>123312</ElementsIdentifier>
+                        <ElementsIcons>
+                            <IconEye />
+                            <IconPrinter />
+                            <IconPDF />
+                        </ElementsIcons>
+                    </BodyTable>
+                    <hr />
+                    <BodyTable>
+                        <ElementsDate>03/10/2020</ElementsDate>
+                        <ElementsMoves>Criação de Plancon</ElementsMoves>
+                        <ElementsIdentifier>123312</ElementsIdentifier>
+                        <ElementsIcons>
+                            <IconEye />
+                            <IconPrinter />
+                            <IconPDF />
+                        </ElementsIcons>
+                    </BodyTable>
+                    <hr />
+                    <BodyTable>
+                        <ElementsDate>03/10/2020</ElementsDate>
+                        <ElementsMoves>Criação de Plancon</ElementsMoves>
+                        <ElementsIdentifier>123312</ElementsIdentifier>
+                        <ElementsIcons>
+                            <IconEye />
+                            <IconPrinter />
+                            <IconPDF />
+                        </ElementsIcons>
+                    </BodyTable>
+                    <hr />
+                    <BodyTable>
+                        <ElementsDate>03/10/2020</ElementsDate>
+                        <ElementsMoves>Criação de Plancon</ElementsMoves>
+                        <ElementsIdentifier>123312</ElementsIdentifier>
+                        <ElementsIcons>
+                            <IconEye />
+                            <IconPrinter />
+                            <IconPDF />
+                        </ElementsIcons>
+                    </BodyTable>
                 </Table>
                 
             </Wrapper>
