@@ -9,6 +9,7 @@ import Input from './pages/Input'
 import Output from './pages/Output'
 import CollabDetails from './pages/CollabDetails'
 import HistoryLocation from './pages/HistoryLocation'
+import StorageLocation from './pages/StorageLocation'
 
 const Routes = () => {
     return (
@@ -23,6 +24,7 @@ const Routes = () => {
                 <Route path="/estoque/entrada" component={Input} />
                 <Route path="/estoque/saida" component={Output} />
                 <Route path="/estoque/historico" component={HistoryLocation} />
+                <Route path="/estoque/quantidade" component={StorageLocation} />
             </Switch>
         </BrowserRouter>
     )
