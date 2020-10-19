@@ -18,7 +18,6 @@ export const Wrapper = styled.div`
     margin-bottom: 100px;
     background-color: var(--color-white);
     border-radius: 8px;
-    height: 500px;
 
     display: flex;
     flex-direction: column;

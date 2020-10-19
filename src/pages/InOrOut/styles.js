@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FiBookOpen, FiBook, FiBox, FiClipboard } from 'react-icons/fi'
 
 export const Container = styled.div`
     height: 100vh;
@@ -37,7 +38,7 @@ export const Form = styled.form`
 `
 
 export const Title = styled.div`
-    max-width: 57%;
+    max-width: 350px;
     padding-bottom: 25px;
     font-family: 'poppins';
     font-weight: 600;
@@ -47,22 +48,29 @@ export const Title = styled.div`
 
 export const FormGroup = styled.div`
     grid-area: form;   
-    height: 200px;
-    width: 300px;
+    height: 185px;
+    width: 255px;
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
+    flex-wrap: wrap;
 `
 
 export const Button = styled.button`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+
     cursor: pointer;
-    height: 40px;
-    width: 100%;
+    height: 80px;
+    width: 120px;
     border-radius: 8px;
     border: none;
     font-family: 'Archivo'; 
-    font-weight: 600;
-    font-size: 2.5rem;
+    font-weight: 500;
+    font-size: 2rem;
     color: var(--color-white);
     background-color: var(--color-button-secondary);
     transition: filter 300ms;
@@ -71,6 +79,29 @@ export const Button = styled.button`
     &:hover{
         filter:brightness(90%);
     }
+`
+
+export const IconInsert = styled(FiBookOpen)`
+    margin-bottom: 10px;
+    width: 28px;
+    height: 28px;
+`
+
+export const IconRemove = styled(FiBook)`
+    margin-bottom: 10px;
+    width: 28px;
+    height: 28px;
+`
+
+export const IconStorage = styled(FiBox)`
+    margin-bottom: 10px;
+    width: 28px;
+    height: 28px;
+`
+export const IconHistory = styled(FiClipboard)`
+    margin-bottom: 10px;
+    width: 28px;
+    height: 28px;
 `
 
 export const ImageGroup = styled.div`

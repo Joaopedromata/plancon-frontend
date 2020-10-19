@@ -10,13 +10,12 @@ export const Container = styled.div`
     background-color: var(--color-secondary);
 `
 
-export const WrapperTable = styled.section`
+export const WrapperTable = styled.div`
     width: 1056px;
     margin-top: -3%;
     margin-bottom: 100px;
     background-color: var(--color-white);
     border-radius: 8px;
-    height: 600px;
 
     display: flex;
     flex-direction: column;
@@ -74,4 +73,19 @@ export const ElementsUnit = styled.div``
 
 export const ElementsQuantity = styled.div``
 
-export const BodyTable = styled.div``
+export const BodyTable = styled.div`
+    margin: 15px 0; 
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 2fr 9fr 3fr 2fr 2fr;
+    grid-template-areas:
+        'sap description category unit quantity'
+    ;   
+
+    color: var(--color-font-dark);
+
+    font-family: 'Archivo';
+    font-size: 15px;
+    font-weight: 400;
+`

@@ -10,6 +10,10 @@ import {
     Title,
     FormGroup,
     Button,
+    IconInsert,
+    IconRemove,
+    IconStorage,
+    IconHistory,
     ImageGroup,
     Image
 } from './styles'
@@ -31,12 +35,19 @@ const InOrOut = ({ location }) => {
                 </Title>
                 <FormGroup>
                     <Button onClick={() => history.push('/estoque/entrada', location.state)}>
+                        <IconInsert />
                         <span>Inserir</span>
                     </Button>
                     <Button onClick={() => history.push('/estoque/saida', location.state)}>
+                        <IconRemove />
                         <span>Retirar</span>
                     </Button>
+                    <Button onClick={() => history.push('/estoque/quantidade', location.state)}>
+                        <IconStorage />
+                        <span>Materiais</span>
+                    </Button>
                     <Button onClick={() => history.push('/estoque/historico', location.state)}>
+                        <IconHistory />
                         <span>Histórico</span>
                     </Button>
                 </FormGroup>

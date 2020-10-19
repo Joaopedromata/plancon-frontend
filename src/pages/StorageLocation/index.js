@@ -13,12 +13,12 @@ import {
 } from './styles'
 import Header from '../../components/Header'
 
-const Storage = () => {
+const Storage = ({ location }) => {
     return (
         <Container>
-            <Header title="Esses são os materiais disponíveis na obra VNO" back="/estoque">
-                <WrapperTable>
-                    {/* <Table>
+            <Header title="Esses são os materiais disponíveis na obra VNO" back="/estoque" infosBack={location.state} />
+              <WrapperTable>
+                    <Table>
                         <HeaderTable>
                             <ElementsSap>SAP</ElementsSap>
                             <ElementsDescription>Descrição</ElementsDescription>
@@ -28,15 +28,158 @@ const Storage = () => {
                         </HeaderTable>
                         <hr />
                         <BodyTable>
-                            <ElementsSap>SAP</ElementsSap>
-                            <ElementsDescription>Descrição</ElementsDescription>
-                            <ElementsCategory>Categoria</ElementsCategory>
-                            <ElementsUnit>UND</ElementsUnit>
-                            <ElementsQuantity>Quantidade</ElementsQuantity>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
                         </BodyTable>
-                    </Table> */}
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                        <hr />
+                        <BodyTable>
+                            <ElementsSap>45645</ElementsSap>
+                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
+                            <ElementsCategory>BANDEJA</ElementsCategory>
+                            <ElementsUnit>UN</ElementsUnit>
+                            <ElementsQuantity>12</ElementsQuantity>
+                        </BodyTable>
+                    </Table>
                 </WrapperTable>
-            </Header>
         </Container>
     )
 }
