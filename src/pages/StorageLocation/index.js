@@ -1,212 +1,76 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
     Container,
     WrapperTable,
     Table,
     HeaderTable,
-    ElementsSap,
-    ElementsDescription,
-    ElementsCategory,
-    ElementsUnit,
-    ElementsQuantity,
     BodyTable
 } from './styles'
 import Header from '../../components/Header'
 import { useEffect } from 'react'
 import api from '../../service/api'
+import ModalQuantity from '../../components/ModalQuantity'
 
 const Storage = ({ location }) => {
 
-    const arr = []
+    const [ products, setProducts ] = useState([])
+    const [ isModalQuantityVisible, setIsModalQuantityVisible ] = useState(false)
+    const [ identifier, setIdentifier ] = useState()
+    const [ sap, setSap ] = useState()
+    const [ description, setDescription ] = useState('')
+    const [ category, setCategory ] = useState('')
+    const [ unit, setUnit ] = useState('')
+
     useEffect(() => {
-        api.get('/storages/inputs/quantity/sum/1/1').then(res => {
-            const teste = res.data.plancons
-            
-            teste.map(oi => {
-                const testando = oi.outputs
-
-
-
-                testando.map(opa => {
-                    return arr.push({quantity: opa.quantity})
-                })
-                
-            } )
-
-            
-            
-        })
-
-        console.log(arr)
+        api.get('/products').then((res) => {
+            return setProducts(res.data)
+        })      
     }, [])
 
+    const handleLinkClick = (id, sap, description, category, unit) => {
+        setIsModalQuantityVisible(true)
+        setIdentifier(id)
+        setSap(sap)
+        setDescription(description)
+        setCategory(category)
+        setUnit(unit)
+    }
+
+   
 
     return (
         <Container>
-            <Header title="Esses são os materiais disponíveis na obra VNO" back="/estoque" infosBack={location.state} />
+            <Header title={`Esses são os materiais disponíveis na obra ${location.state.name}`} back="/estoque" infosBack={location.state}/>
               <WrapperTable>
                     <Table>
                         <HeaderTable>
-                            <ElementsSap>SAP</ElementsSap>
-                            <ElementsDescription>Descrição</ElementsDescription>
-                            <ElementsCategory>Categoria</ElementsCategory>
-                            <ElementsUnit>UND</ElementsUnit>
-                            <ElementsQuantity>Quantidade</ElementsQuantity>
+                            <h4>SAP</h4>
+                            <h4>Descrição</h4>
+                            <h4>Categoria</h4>
                         </HeaderTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
-                        <hr />
-                        <BodyTable>
-                            <ElementsSap>45645</ElementsSap>
-                            <ElementsDescription>BANDEJA OPT 12 FUSÕES CEO FX-T CINZA</ElementsDescription>
-                            <ElementsCategory>BANDEJA</ElementsCategory>
-                            <ElementsUnit>UN</ElementsUnit>
-                            <ElementsQuantity>12</ElementsQuantity>
-                        </BodyTable>
+                       {products.map(data => (
+                            <>
+                                <hr />                                
+                                <BodyTable>
+                                    <button onClick={() => handleLinkClick(data.id, data.sap, data.description, data.category.name, data.unit.name)}>{data.sap}</button>
+                                    <button onClick={() => handleLinkClick(data.id, data.sap, data.description, data.category.name, data.unit.name)}>{data.description}</button>
+                                    <button onClick={() => handleLinkClick(data.id, data.sap, data.description, data.category.name, data.unit.name)}>{data.category.name}</button>
+                                </BodyTable>
+                            </>
+                       ))}
+                      
                     </Table>
                 </WrapperTable>
+                {isModalQuantityVisible && <ModalQuantity 
+                                    onClose={() => setIsModalQuantityVisible(false)}
+                                    identifier={identifier}
+                                    location={location.state.id}
+                                    sapProps={sap}
+                                    descriptionProps={description}
+                                    categoryProps={category}
+                                    unitProps={unit}
+                                />
+                }
         </Container>
     )
 }

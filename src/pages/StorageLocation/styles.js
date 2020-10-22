@@ -24,7 +24,7 @@ export const WrapperTable = styled.div`
 `
 
 export const Table = styled.table`
-    width: 80%;
+    width: 70%;
     
     padding-bottom: 100px;
 
@@ -51,9 +51,9 @@ export const HeaderTable = styled.div`
     width: 100%;
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 2fr 9fr 3fr 2fr 2fr;
+    grid-template-columns: 2fr 9fr 2fr;
     grid-template-areas:
-        'sap description category unit quantity'
+        'sap description category'
     ;   
 
     color: var(--color-font-dark);
@@ -63,29 +63,34 @@ export const HeaderTable = styled.div`
     font-weight: 600;
 `
 
-export const ElementsSap = styled.div``
-
-export const ElementsDescription = styled.div``
-
-export const ElementsCategory = styled.div``
-
-export const ElementsUnit = styled.div``
-
-export const ElementsQuantity = styled.div``
-
 export const BodyTable = styled.div`
+
     margin: 15px 0; 
     width: 100%;
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 2fr 9fr 3fr 2fr 2fr;
+    grid-template-columns: 2fr 9fr 2fr;
     grid-template-areas:
-        'sap description category unit quantity'
+        'sap description category'
     ;   
 
-    color: var(--color-font-dark);
+   
 
-    font-family: 'Archivo';
-    font-size: 15px;
-    font-weight: 400;
+    > button {
+        color: var(--color-font-dark);
+        background: none;
+
+        cursor: pointer;
+        font-family: 'Archivo';
+        font-size: 15px;
+        font-weight: 400;
+        outline: none;
+        border: none;
+        text-align: start;
+        transition: transform 300ms;
+
+        &:hover{
+            transform: scale(1.01)
+        }  
+    }
 `

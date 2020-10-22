@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import imgInOrOut from '../../assets/image-in-or-out.svg'
 
@@ -25,7 +25,7 @@ const InOrOut = ({ location }) => {
     return (
         <Container>
             <Header>
-                <Logo>
+                <Logo onClick={() => history.push('/obras', location.state)}>
                     planCon
                 </Logo>
             </Header>

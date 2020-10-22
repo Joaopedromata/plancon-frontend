@@ -27,6 +27,7 @@ export const Logo = styled.div`
     align-items: center;
     padding: 0 60px;
     color: var(--color-white);
+    cursor: pointer;
 `
 
 export const Form = styled.form`
