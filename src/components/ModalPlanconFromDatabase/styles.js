@@ -113,14 +113,12 @@ export const Table = styled.table`
 
 export const WrapperTables = styled.thead`
     display: flex;
-    align-items: center;
     flex-direction: column;
     
 `
 
 export const WrapperElements = styled.thead`
     display: flex;
-    align-items: center;
     flex-direction: column;
 `
 
@@ -128,9 +126,9 @@ export const WrapperElements = styled.thead`
 export const TableData = styled.tr`
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 140px 500px 130px 80px;
+    grid-template-columns: 120px 400px 120px 120px 90px;
     grid-template-areas:
-        'SAP description unit quantity'
+        'SAP description unit quantity identifier'
     ;
     margin-bottom: 15px;
 `
@@ -138,13 +136,11 @@ export const TableData = styled.tr`
 export const ElementsTableData = styled.tr`
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 140px 500px 130px 80px;
+    grid-template-columns: 120px 400px 120px 120px 90px;
     grid-template-areas:
-        'SAP description unit quantity'
+        'SAP description unit quantity identifier'
     ;
-    padding: 15px 0;    
-    width: 100%;
-
+    margin: 15px 0;    
 `
 
 export const TitleElementsSAP = styled.th`
@@ -171,8 +167,8 @@ export const TitleElementsQuantity = styled.th`
     font-weight: 600;
 `
 
-export const TitleElementsIcons = styled.th`
-    grid-area: icons;
+export const TitleElementsIdentifier = styled.th`
+    grid-area: identifier;
     text-align: left;
     font-weight: 600;
 `
@@ -200,6 +196,13 @@ export const ElementsQuantity = styled.th`
     text-align: left;
     font-weight: 400;
 `
+
+export const ElementsIdentifier = styled.th`
+    grid-area: identifier;
+    text-align: left;
+    font-weight: 400;
+`
+
 
 
 

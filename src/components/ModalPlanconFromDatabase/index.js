@@ -18,12 +18,13 @@ import {
     TitleElementsDescription,
     TitleElementsUnit,
     TitleElementsQuantity,
-    TitleElementsIcons,
+    TitleElementsIdentifier,
     ElementsTableData,
     ElementsSAP,
     ElementsDescription,
     ElementsUnit,
-    ElementsQuantity
+    ElementsQuantity,
+    ElementsIdentifier
 } from './styles'
 
 
@@ -72,7 +73,7 @@ const ModalPlanconFromDatabase = ({ id = 'modal', onClose = () => {}, identifier
                                 <TitleElementsDescription>Descrição</TitleElementsDescription>
                                 <TitleElementsUnit>UND</TitleElementsUnit>
                                 <TitleElementsQuantity>Quantidade</TitleElementsQuantity>
-                                <TitleElementsIcons></TitleElementsIcons>
+                                <TitleElementsIdentifier>Lote</TitleElementsIdentifier>
                             </TableData>
                         </WrapperTables>
                     )}
@@ -86,6 +87,7 @@ const ModalPlanconFromDatabase = ({ id = 'modal', onClose = () => {}, identifier
                                     <ElementsDescription>{products.product.description}</ElementsDescription>
                                     <ElementsUnit>{products.product.unit.name}</ElementsUnit>
                                     <ElementsQuantity>{products.quantity}</ElementsQuantity>
+                                    <ElementsIdentifier>{products.identifier}</ElementsIdentifier>
                                 </ElementsTableData>
                             </WrapperElements>
                         </>

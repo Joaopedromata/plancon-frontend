@@ -24,12 +24,14 @@ import {
     TitleElementsDescription,
     TitleElementsUnit,
     TitleElementsQuantity,
+    TitleElementsIdentifier,
     TitleElementsIcons,
     ElementsTableData,
     ElementsSAP,
     ElementsDescription,
     ElementsUnit,
     ElementsQuantity,
+    ElementsIdentifier,
     ElementsIcons,
     Edit,
     Remove
@@ -54,6 +56,7 @@ const Output = ({ location }) => {
     const [ description, setDescription ] = useState('')
     const [ unit, setUnit ] = useState('')
     const [ quantity, setQuantity ] = useState('')
+    const [ identifier, setIdentifier ] = useState('')
 
     const [ isDisabledPlancon, setIsDisabledPlancon ] = useState(false)
     const [ isDisabled, setIsDisabled ] = useState(true)
@@ -72,8 +75,9 @@ const Output = ({ location }) => {
                 
                 const productId = (res.data.id)
                 const quantityValue = data.quantity
+                const identifierValue = data.identifier
 
-                api.post(`/storages/outputs/${productId}/${planconId}`, { quantity: quantityValue }).then(() => {
+                api.post(`/storages/outputs/${productId}/${planconId}`, { quantity: quantityValue, identifier: identifierValue }).then(() => {
                     
                 }).catch(() => {
                     alert('Erro ao cadastrar produtos na Plancon')
@@ -139,7 +143,8 @@ const Output = ({ location }) => {
             sap,
             description,
             unit,
-            quantity
+            quantity,
+            identifier
         }
 
 
@@ -157,7 +162,7 @@ const Output = ({ location }) => {
         
         if(quantity === '' || quantity == null || typeof quantity == undefined){
             return alert('Preencha todos os campos')
-        }          
+        }       
 
         const addToFillTable = (compare) => {
             const index = fillTable.findIndex(search => search.sap == compare);
@@ -171,6 +176,7 @@ const Output = ({ location }) => {
             setDescription('')
             setUnit('')
             setQuantity('')
+            setIdentifier('')
         }
                             
         const editFillTable = (compare) => {
@@ -180,6 +186,7 @@ const Output = ({ location }) => {
             const found = newFillTable.findIndex(search => search.sap === compare)
 
             newFillTable[found].quantity = quantity
+            newFillTable[found].identifier = identifier
 
             setFillTable(newFillTable)
             setIsEdit(false)
@@ -189,6 +196,7 @@ const Output = ({ location }) => {
             setDescription('')
             setUnit('')
             setQuantity('')
+            setIdentifier('')
        }
 
 
@@ -217,6 +225,7 @@ const Output = ({ location }) => {
         setDescription(fillTable[found].description)
         setUnit(fillTable[found].unit)
         setQuantity(fillTable[found].quantity)
+        setIdentifier(fillTable[found].identifier)
 
         setIsDisabledSap(true)
         setIsEdit(true)
@@ -295,6 +304,15 @@ const Output = ({ location }) => {
                                     value={quantity}
                                  />
                              </InputFormGroup>
+                             <InputFormGroup>
+                                 <Label>Lote</Label>
+                                 <InputQuantity
+                                    placeholder="Lote"
+                                    disabled={isDisabled}    
+                                    onChange={e => setIdentifier(e.target.value)}
+                                    value={identifier}
+                                 />
+                             </InputFormGroup>
                          </InputFormGroupProduct>
                          <SubmitButton><IconPlus /></SubmitButton>
                  </FormGroup> 
@@ -307,6 +325,7 @@ const Output = ({ location }) => {
                                  <TitleElementsDescription>Descrição</TitleElementsDescription>
                                  <TitleElementsUnit>UND</TitleElementsUnit>
                                  <TitleElementsQuantity>Quantidade</TitleElementsQuantity>
+                                 <TitleElementsIdentifier>Lote</TitleElementsIdentifier>
                                  <TitleElementsIcons></TitleElementsIcons>
                              </TableData>
                          </WrapperTables>
@@ -320,6 +339,7 @@ const Output = ({ location }) => {
                                 <ElementsDescription>{products.description}</ElementsDescription>
                                 <ElementsUnit>{products.unit}</ElementsUnit>
                                 <ElementsQuantity>{products.quantity}</ElementsQuantity>
+                                <ElementsIdentifier>{products.identifier}</ElementsIdentifier>
                                 <ElementsIcons><Edit onClick={() => handleEditProduct(products.sap)}/><Remove onClick={() => handleRemoveProduct(products.sap)}/></ElementsIcons>
                             </ElementsTableData>
                         </>

@@ -342,7 +342,7 @@ const Input = ({ location }) => {
                                     cities={location.state} 
                                     onClose={() => setIsModalVisible(false)}
                                     date={dateRM}
-                                    identifier={rmId}
+                                    identifier={identifier}
                                 />}
         </Container>
     )

@@ -128,9 +128,9 @@ export const InputFormGroupProduct = styled.div`
 
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 170px 430px 130px 168px 1fr;
+    grid-template-columns: 150px 380px 120px 140px 110px;
     grid-template-areas:
-        'SAP description unit quantity'
+        'SAP description unit quantity identifier'
     ;
     
 `
@@ -283,19 +283,18 @@ export const WrapperTables = styled.thead`
 export const TableData = styled.tr`
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 170px 430px 130px 158px 1fr;
+    grid-template-columns: 150px 380px 120px 140px 110px;
     grid-template-areas:
-        'SAP description unit quantity icons'
-    ;
+        'SAP description unit quantity identifier';
     margin-bottom: 15px;
 `
 
 export const ElementsTableData = styled.tr`
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 170px 430px 130px 158px 1fr;
+    grid-template-columns: 150px 380px 120px 140px 110px;
     grid-template-areas:
-        'SAP description unit quantity icons'
+        'SAP description unit quantity identifier icons'
     ;
     padding: 15px 0;    
 
@@ -321,6 +320,11 @@ export const TitleElementsUnit = styled.th`
 
 export const TitleElementsQuantity = styled.th`
     grid-area: quantity;
+    text-align: left;
+    font-weight: 600;
+`
+export const TitleElementsIdentifier = styled.th`
+    grid-area: identifier;
     text-align: left;
     font-weight: 600;
 `
@@ -377,6 +381,12 @@ export const ElementsUnit = styled.th`
 
 export const ElementsQuantity = styled.th`
     grid-area: quantity;
+    text-align: left;
+    font-weight: 400;
+`
+
+export const ElementsIdentifier = styled.th`
+    grid-area: identifier;
     text-align: left;
     font-weight: 400;
 `

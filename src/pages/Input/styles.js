@@ -93,9 +93,6 @@ export const InputForm = styled.input`
     padding: 0 20px;
     font-family: 'Archivo';
 
-    &:focus {
-        /* box-shadow: 0 0 7px var(--color-input-shadow); */
-    }
 
     &::-webkit-input-placeholder { 
         font-weight: 400;
@@ -117,9 +114,6 @@ export const InputSap = styled.input `
     padding: 0 0 0 20px;
     font-family: 'Archivo';
 
-    &:focus {
-        /* box-shadow: 0 0 7px var(--color-input-shadow); */
-    }
 
     &::-webkit-input-placeholder { 
         font-weight: 400;
@@ -141,9 +135,6 @@ export const InputDescription = styled.input `
     padding: 0 0 0 20px;
     font-family: 'Archivo';
 
-    &:focus {
-        /* box-shadow: 0 0 7px var(--color-input-shadow); */
-    }
 
     &::-webkit-input-placeholder { 
         font-weight: 400;
@@ -163,9 +154,6 @@ export const InputUnit = styled.input `
     padding: 0 0 0 20px;
     font-family: 'Archivo';
 
-    &:focus {
-        /* box-shadow: 0 0 7px var(--color-input-shadow); */
-    }
 
     &::-webkit-input-placeholder { 
         font-weight: 400;
@@ -185,9 +173,6 @@ export const InputQuantity = styled.input `
     padding: 0 0 0 20px;
     font-family: 'Archivo';
 
-    &:focus {
-        /* box-shadow: 0 0 7px var(--color-input-shadow); */
-    }
 
     &::-webkit-input-placeholder { 
         font-weight: 400;
